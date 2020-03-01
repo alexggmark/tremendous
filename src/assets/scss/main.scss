@@ -1,0 +1,81 @@
+$width-lg: 1100px;
+$width-md: 860px;
+$width-sm: 567px;
+
+$font-bold: 'Spartan-ExtraBold';
+$font-medium: 'Spartan-Medium';
+$font-thin: 'Spartan-Thin';
+
+$font-size-logo: 45px;
+$font-size-xl: 40px;
+$font-size-lg: 25px;
+$font-size-md: 20px;
+$font-size-sm: 15px;
+$font-size-xs: 12px;
+$font-size-2xs: 10px;
+
+$line-height-xl: 56px;
+$line-height-lg: 36px;
+$line-height-md: 26px;
+
+$spacing-xl: 2.5rem;
+$spacing-lg: 2rem;
+$spacing-md: 1.5rem;
+$spacing-sm: 1rem;
+$spacing-xs: 0.65rem;
+$spacing-2xs: 0.4rem;
+$spacing-3xs: 0.3rem;
+
+$layout-lg: 115px;
+$layout-md: 75px;
+$layout-sm: 30px;
+
+$color-black: #000000;
+$color-white: #ffffff;
+$color-grey: #B4B4B4;
+$color-blue: #0047FF;
+
+@font-face {
+  font-family: 'Lobster';
+  src: url('../assets/fonts/Lobster-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spartan-ExtraBold';
+  src: url('../assets/fonts/Spartan-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spartan-Medium';
+  src: url('../assets/fonts/Spartan-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spartan-Thin';
+  src: url('../assets/fonts/Spartan-Light.ttf') format('truetype');
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Spartan-Thin', sans-serif;
+}
+
+.h1 {
+  font-family: $font-bold;
+  font-size: $font-size-xl;
+  line-height: $line-height-xl;
+  margin: $spacing-sm 0 $spacing-md;
+}
+
+.h2 {
+  font-family: $font-bold;
+  font-size: $font-size-md;
+  line-height: $line-height-lg;
+}
+
+.h5 {
+  color: $color-grey;
+  font-family: $font-thin;
+  font-size: $font-size-xs;
+}
