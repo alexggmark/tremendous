@@ -25,10 +25,10 @@ export default {
   width: 100%;
 
   &__container {
-    border-bottom: 1px solid #000000;
-    border-top: 1px solid #000000;
+    border-bottom: 1px dotted #000000;
+    border-top: 1px dotted #000000;
     margin: 1rem auto 0;
-    width: $width-lg;
+    width: 100%;
   }
 
   &__menu-title {
@@ -37,26 +37,32 @@ export default {
   }
 
   ul {
-  display: inline-block;
-  list-style-type: none;
-  margin-block-start: 0.65rem;
-  margin-block-end: 0.65rem;
-  padding-left: 0.5rem;
+    display: inline-block;
+    list-style-type: none;
+    margin-block-start: 0.65rem;
+    margin-block-end: 0.65rem;
+    padding-left: 0.5rem;
 
-  li {
-    display: inline;
-    font-size: 14px;
-    margin-right: 1rem;
+    li {
+      display: inline;
+      font-size: 14px;
+      margin-right: 1rem;
 
-    a {
-      color: #000000;
-      text-decoration: none;
+      a {
+        color: #000000;
+        text-decoration: none;
 
-      &:hover {
-        text-decoration: underline;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
-}
+
+  @media screen and (min-width: $width-md) {
+    &__container {
+      width: $width-lg;
+    }
+  }
 }
 </style>

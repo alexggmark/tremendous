@@ -19,7 +19,7 @@ export default {
 
 <style lang="scss">
 .footer {
-  background-color: $color-black;
+  background-color: $color-background;
   color: $color-white;
 
   &__container {

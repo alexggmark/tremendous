@@ -27,13 +27,17 @@ $spacing-2xs: 0.4rem;
 $spacing-3xs: 0.3rem;
 
 $layout-lg: 115px;
-$layout-md: 75px;
+$layout-md: 60px;
 $layout-sm: 30px;
 
+$layout-margin: 10px;
+
+$color-background: #0300dc;
 $color-black: #000000;
 $color-white: #ffffff;
 $color-grey: #B4B4B4;
-$color-blue: #0047FF;
+$color-grey-light: #e4e4e4;
+$color-blue: #0020ff;
 
 @font-face {
   font-family: 'Lobster';
@@ -78,4 +82,8 @@ html, body {
   color: $color-grey;
   font-family: $font-thin;
   font-size: $font-size-xs;
+}
+
+.shadow {
+  box-shadow: 0px 8px 10px rgba(0,0,0,0.08);
 }

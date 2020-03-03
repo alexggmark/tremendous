@@ -11,9 +11,7 @@
           <p>An initial test for the virus developed by the Centers for Disease Control and Prevention was plagued by technical problems and has been in short supply ...</p>
         </span>
       </div>
-      <div class="article-block__image">
-        <img src="@/assets/images/code.jpg">
-      </div>
+      <div class="article-block__image" :style="{ backgroundImage: 'url(' + imageUrl + ')' }"></div>
     </div>
     <div class="article-block__bottom-spacer"></div>
   </div>
@@ -21,24 +19,31 @@
 
 <script>
 export default {
-
+  data() {
+    return {
+      imageUrl: require('@/assets/images/code.jpg'),
+    }
+  }
 }
 </script>
 
 <style lang="scss">
 .article-block {
-  background-color: $color-black;
+  background-color: $color-background;
   color: $color-white;
 
   &__container {
     display: flex;
-    flex-flow: column;
+    flex-flow: column-reverse;
     margin: 0 auto;
-    padding: $layout-sm 0;
+    padding: calc(#{$layout-margin} / 2) 0 $spacing-md;
     width: 100%;
   }
 
   &__image {
+    background-size: cover;
+    background-position: center;
+    height: 360px;
     width: 100%;
 
     img {
@@ -50,8 +55,8 @@ export default {
     padding: 0 $layout-sm 0 0;
   }
 
-  &__title {
-    margin-top: 0;
+  &__title.h1 {
+    margin-top: $spacing-xl;
   }
 
   &__date {
@@ -80,10 +85,12 @@ export default {
   @media screen and (min-width: $width-md) {
     &__container {
       flex-flow: row;
+      padding: $layout-md 0;
       width: $width-lg;
     }
 
     &__image {
+      padding-top: $spacing-lg;
       width: 50%;
 
       img {
@@ -92,8 +99,11 @@ export default {
     }
 
     &__content {
-      padding-top: $spacing-xs;
       width: 50%;
+    }
+
+    &__title.h1 {
+      margin-top: 0;
     }
   }
 }

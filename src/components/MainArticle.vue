@@ -68,7 +68,7 @@ export default {
   }
 
   &__date {
-    border-bottom: 1px dotted $color-black;
+    border-bottom: 1px solid $color-black;
     display: block;
     font-family: $font-medium;
     font-size: $font-size-2xs;

@@ -9,7 +9,7 @@
           <span class="h5">Article</span>
           <h1 class="h1">
             <a href="#">
-             Cases Spread in Western U.S., Jump in Iran, Korea: Virus
+              {{ post }} Cases Spread in Western U.S., Jump in Iran, Korea: Virus
             </a>
           </h1>
           <span class="home-article__date">24th February 2020</span>
@@ -24,11 +24,33 @@
 
 <script>
 import MoreArticles from '@/components/MoreArticles'
+import {ContentTasks} from '@/common/api'
 
 export default {
+  data() {
+    return {
+      post: [],
+    }
+  },
   components: {
     MoreArticles,
-  }
+  },
+  created() {
+    // ContentTasks.getHomepageArticle();
+    // this.post = ContentTasks.state;
+
+    ContentTasks.getHomepageArticle()
+      .then((post) => {
+        this.post = post;
+        console.log(post);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        console.log('FINISHED CALL');
+      })
+  },
 }
 </script>
 

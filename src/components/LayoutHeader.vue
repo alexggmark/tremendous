@@ -2,16 +2,15 @@
   <header>
     <div class="header">
       <div class="header__container">
-        <navigation class="header__navigation">
+        <div class="header__navigation">
           <navigation-component/>
-        </navigation>
+        </div>
         <div class="header__logo">
           <logo-animation/>
           tremendous
         </div>
       </div>
     </div>
-    <div class="header__bottom-spacer"></div>
   </header>
 </template>
 
@@ -29,8 +28,8 @@ export default {
 
 <style lang="scss">
   .header {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: $color-background;
+    color: $color-white;
     width: 100%;
 
     &__container {
@@ -48,13 +47,6 @@ export default {
       display: flex;
       font-family: 'Lobster', sans-serif;
       font-size: 45px;
-    }
-
-    &__bottom-spacer {
-      background-color: #ffffff;
-      border-bottom: 1px dotted #000000;
-      height: 4px;
-      width: 100%;
     }
 
     &__navigation {

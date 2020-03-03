@@ -2,7 +2,7 @@
   <div class="article-grid">
     <div class="article-grid__container">
       <div class="article-grid__item" v-for="(article, index) in articleGrid" :key="index">
-        <div class="article-grid__item--inner">
+        <div class="article-grid__item--inner shadow">
           <h2 class="h2">
             <a href="#">
               {{ article.title }}
@@ -58,20 +58,23 @@ export default {
 
 <style lang="scss">
 .article-grid {
+  background-color: #fbfbfb;
+  border-top: 1px solid $color-grey-light;
+
   &__container {
-    border-top: 1px solid $color-black;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto $layout-sm;
+    padding-top: $spacing-sm;
     width: 100%;
   }
 
   &__item {
-    margin-bottom: $spacing-sm;
+    margin-bottom: $spacing-lg;
     width: 50%;
 
     &--inner {
-      border-bottom: 1px dotted $color-black;
+      background-color: $color-white;
       cursor: pointer;
       display: flex;
       flex-flow: column;
@@ -79,6 +82,7 @@ export default {
       justify-content: space-between;
       margin: 0 $spacing-xs 0 0;
       padding-bottom: $spacing-sm;
+      padding-left: $spacing-xs;
       padding-right: $spacing-sm;
 
       &:hover {
@@ -107,6 +111,10 @@ export default {
 
     &__item {
       width: 25%;
+
+      &--inner {
+        margin: 0 $spacing-xs 0 0;
+      }
     }
   }
 }

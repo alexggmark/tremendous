@@ -1,14 +1,25 @@
-import PageHomepage from '@/components/PageHomepage'
+import Vue from "vue";
+import Router from "vue-router";
 
-const routes = [
-  {
-    name: 'Home',
-    path: '/',
-    component: PageHomepage,
-    meta: {
-      layout: 'default'
-    }
-  },
-]
+Vue.use(Router);
 
-export default routes;
+export default new Router({
+  routes: [
+    {
+      name: 'Home',
+      path: '/',
+      component: () => import('@/components/PageHomepage'),
+      meta: {
+        layout: 'default'
+      }
+    },
+    {
+      name: 'Article',
+      path: '/article',
+      component: () => import('@/components/PageArticle'),
+      meta: {
+        layout: 'default'
+      }
+    },
+  ]
+});
