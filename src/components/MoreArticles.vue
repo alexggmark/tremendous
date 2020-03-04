@@ -1,20 +1,40 @@
 <template>
   <ul>
-    <li v-for="(title, index) in moreArticles" :key="index">
-      <a href="#">{{ title }}</a>
+    <li v-for="(item, index) in moreArticles" :key="index">
+      <a href="#">{{ item.title }}</a>
     </li>
   </ul>
 </template>
 
 <script>
+import tools from '@/common/tools'
+
 export default {
+  props: {
+    dataList: {
+      type: Array,
+      required: true,
+    }
+  },
   data() {
     return {
-      moreArticles: [
-        'Cases Spread in Western U.S., Jump in Iran, Korea: Virus Update',
-        'Trump’s Coronavirus Response Bedeviled by Missteps, Raising...',
-        'Powell’s ‘Whatever It Takes’ Moment Is Here, But Will It Work?',
-      ]
+      moreArticles: [],
+    }
+  },
+  methods: {
+    processProp(propData) {
+      const newData = propData.map((item) => {
+        return {
+          title: tools.truncateString(item.fields.title, 60),
+        }
+      });
+
+      this.moreArticles = newData;
+    }
+  },
+  watch: {
+    dataList() {
+      this.processProp(this.dataList);
     }
   }
 }

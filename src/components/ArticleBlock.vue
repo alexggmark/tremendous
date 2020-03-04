@@ -3,27 +3,62 @@
     <div class="article-block__container">
       <div class="article-block__content">
         <h2 class="h1 article-block__title">
-          Five Charts Tell Horror Story of European Market’s Mayhem
+          {{contentTitle}}
         </h2>
-        <span class="article-block__date">24th February 2020</span>
-        <span class="article-block__text-content">
-          <p>The Trump administration’s response to the global coronavirus outbreak has been riven by missteps, including problems developing and distributing a test for the infection and discordant public messages, raising risk that the president’s assertions the virus is contained may be proved wrong.</p>
-          <p>An initial test for the virus developed by the Centers for Disease Control and Prevention was plagued by technical problems and has been in short supply ...</p>
+        <span class="article-block__date">{{contentDate}}</span>
+        <span class="article-block__text-content" v-html="contentText">
         </span>
       </div>
-      <div class="article-block__image" :style="{ backgroundImage: 'url(' + imageUrl + ')' }"></div>
+      <div class="article-block__image" v-lazy:background-image="contentImage"></div>
     </div>
     <div class="article-block__bottom-spacer"></div>
   </div>
 </template>
 
 <script>
+import {ContentTasks} from '@/common/api'
+import tools from '@/common/tools'
+
 export default {
   data() {
     return {
+      data: [],
       imageUrl: require('@/assets/images/code.jpg'),
     }
-  }
+  },
+  computed: {
+    contentType() {
+      if (!this.data.sys) { return null; }
+      return this.data.sys.contentType.sys.id;
+    },
+    contentTitle() {
+      if (!this.data.fields) { return null; }
+      return tools.truncateString(this.data.fields.title, 70);
+    },
+    contentDate() {
+      if (!this.data.sys) { return null; }
+      return tools.processDate(this.data.sys.createdAt);
+    },
+    contentImage() {
+      if (!this.data.fields) { return null; }
+      return this.data.fields.image.fields.file.url;
+    },
+    contentText() {
+      if (!this.data.fields) { return null; }
+      const limitedText = tools.processRichText(this.data.fields.body, 500);
+      // if (limitedText.charAt(limitedText.length) ===)
+      return `${limitedText}...`;
+    }
+  },
+  created() {
+    ContentTasks.getArticles(2)
+      .then((post) => {
+        this.data = post.items[1];
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  },
 }
 </script>
 

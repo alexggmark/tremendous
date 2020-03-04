@@ -1,9 +1,6 @@
 import { contentfulSpaceId, contentfulAccessToken } from './config.js'
 const contentful = require('contentful');
 
-console.log(`contentfulAccessToken ${contentfulAccessToken}`)
-console.log(`contentfulSpaceId ${contentfulSpaceId}`)
-
 const client = contentful.createClient({
   space: contentfulSpaceId,
   accessToken: contentfulAccessToken,
@@ -21,6 +18,15 @@ const ApiTasks = {
       limit,
     })
       .then((entries) => entries);
+  },
+  getEntryByNumber(type, number) {
+    return client.getEntries({
+      skip: number,
+      limit: 1
+    })
+      .then((entry) => {
+        return entry;
+      });
   }
 }
 
@@ -30,7 +36,7 @@ export const ContentTasks = {
   getHomepageArticle() {
     return ApiTasks.getRecentEntries('articles', 1);
   },
-  getGridArticles() {
-    return ApiTasks.getRecentEntries('articles', 7);
+  getArticles(limit) {
+    return ApiTasks.getRecentEntries('articles', limit);
   },
 }

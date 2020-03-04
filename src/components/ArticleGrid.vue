@@ -1,7 +1,7 @@
 <template>
   <div class="article-grid">
     <div class="article-grid__container">
-      <div class="article-grid__item" v-for="(article, index) in articleGrid" :key="index">
+      <div class="article-grid__item" v-for="(article, index) in data" :key="index">
         <div class="article-grid__item--inner shadow">
           <h2 class="h2">
             <a href="#">
@@ -18,41 +18,36 @@
 </template>
 
 <script>
+import {ContentTasks} from '@/common/api'
+import tools from '@/common/tools'
+
 export default {
   data() {
     return {
-      articleGrid: [
-        {
-          title: 'Cases Spread in Western U.S., Jump in Iran, Korea: Virus',
-          date: '22nd February 2020',
-        },
-        {
-          title: 'Five Charts Tell Horror Story of European Market’s Mayhem',
-          date: '22nd February 2020',
-        },
-        {
-          title: 'China Posts Weakest Factory Activity on Record',
-          date: '22nd February 2020',
-        },
-        {
-          title: 'Cases Spread in Western U.S., Jump in Iran, Korea: Virus',
-          date: '22nd February 2020',
-        },
-        {
-          title: 'China Posts Weakest Factory Activity on Record',
-          date: '22nd February 2020',
-        },
-        {
-          title: 'Five Charts Tell Horror Story of European Market’s',
-          date: '22nd February 2020',
-        },
-        {
-          title: 'Cases Spread in Western U.S., Jump in Iran, Korea: Virus',
-          date: '22nd February 2020',
-        },
-      ]
+      data: [],
     }
-  }
+  },
+  methods: {
+    set(items) {
+      const output = items.map((item) => {
+        return {
+          title: tools.truncateString(item.fields.title, 60),
+          date: tools.processDate(item.sys.createdAt),
+        };
+      });
+      this.data = output;
+    }
+  },
+  created() {
+    ContentTasks.getArticles(7)
+      .then((post) => {
+        this.set(post.items);
+        console.log(post);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  },
 }
 </script>
 

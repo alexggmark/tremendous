@@ -2,19 +2,19 @@
   <div class="home-article">
     <div class="home-article__container">
       <div class="home-article__image">
-        <img src="@/assets/images/burger.jpg">
+        <img v-lazy="contentImage">
       </div>
       <div class="home-article__content">
         <div class="home-article__content--inner">
-          <span class="h5">Article</span>
+          <span class="h5">{{contentType}}</span>
           <h1 class="h1">
             <a href="#">
-              {{ post }} Cases Spread in Western U.S., Jump in Iran, Korea: Virus
+              {{contentTitle}}
             </a>
           </h1>
-          <span class="home-article__date">24th February 2020</span>
+          <span class="home-article__date">{{contentDate}}</span>
           <div class="home-article__more-articles">
-            <more-articles/>
+            <more-articles :data-list="propData"/>
           </div>
         </div>
       </div>
@@ -25,30 +25,51 @@
 <script>
 import MoreArticles from '@/components/MoreArticles'
 import {ContentTasks} from '@/common/api'
+import tools from '@/common/tools'
 
 export default {
   data() {
     return {
-      post: [],
+      data: [],
+      propData: [],
     }
   },
   components: {
     MoreArticles,
   },
+  computed: {
+    contentType() {
+      if (!this.data.sys) { return null; }
+      return this.data.sys.contentType.sys.id;
+    },
+    contentTitle() {
+      if (!this.data.fields) { return null; }
+      return tools.truncateString(this.data.fields.title, 70);
+    },
+    contentDate() {
+      if (!this.data.sys) { return null; }
+      return tools.processDate(this.data.sys.createdAt);
+    },
+    contentImage() {
+      if (!this.data.fields) { return null; }
+      return this.data.fields.image.fields.file.url;
+    }
+  },
   created() {
-    // ContentTasks.getHomepageArticle();
-    // this.post = ContentTasks.state;
-
     ContentTasks.getHomepageArticle()
       .then((post) => {
-        this.post = post;
+        this.data = post.items[0];
         console.log(post);
       })
       .catch((error) => {
         console.log(error);
       })
-      .finally(() => {
-        console.log('FINISHED CALL');
+    ContentTasks.getArticles(3)
+      .then((post) => {
+        this.propData = post.items;
+      })
+      .catch((error) => {
+        console.log(error);
       })
   },
 }
