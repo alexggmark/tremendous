@@ -1,7 +1,9 @@
 <template>
   <ul>
-    <li v-for="(item, index) in moreArticles" :key="index">
-      <a href="#">{{ item.title }}</a>
+    <li v-for="(article, index) in moreArticles" :key="index">
+      <router-link :to="{name: 'Article', params: {handle: article.entryId}}">
+        {{ article.title }}
+      </router-link>
     </li>
   </ul>
 </template>
@@ -26,6 +28,7 @@ export default {
       const newData = propData.map((item) => {
         return {
           title: tools.truncateString(item.fields.title, 60),
+          entryId: item.sys.id,
         }
       });
 

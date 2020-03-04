@@ -4,9 +4,9 @@
       <div class="article-grid__item" v-for="(article, index) in data" :key="index">
         <div class="article-grid__item--inner shadow">
           <h2 class="h2">
-            <a href="#">
+            <router-link :to="{name: 'Article', params: {handle: article.entryId}}">
               {{ article.title }}
-            </a>
+            </router-link>
           </h2>
           <span class="article-grid__date">
             {{ article.date }}
@@ -33,6 +33,7 @@ export default {
         return {
           title: tools.truncateString(item.fields.title, 60),
           date: tools.processDate(item.sys.createdAt),
+          entryId: item.sys.id,
         };
       });
       this.data = output;

@@ -6,7 +6,7 @@
           {{contentTitle}}
         </h2>
         <span class="article-block__date">{{contentDate}}</span>
-        <span class="article-block__text-content" v-html="contentText">
+        <span class="article-block__text-content" v-html="contentTextTruncated">
         </span>
       </div>
       <div class="article-block__image" v-lazy:background-image="contentImage"></div>
@@ -17,39 +17,15 @@
 
 <script>
 import {ContentTasks} from '@/common/api'
-import tools from '@/common/tools'
+import {articleDataBuilder} from '@/common/tools'
 
 export default {
   data() {
     return {
       data: [],
-      imageUrl: require('@/assets/images/code.jpg'),
     }
   },
-  computed: {
-    contentType() {
-      if (!this.data.sys) { return null; }
-      return this.data.sys.contentType.sys.id;
-    },
-    contentTitle() {
-      if (!this.data.fields) { return null; }
-      return tools.truncateString(this.data.fields.title, 70);
-    },
-    contentDate() {
-      if (!this.data.sys) { return null; }
-      return tools.processDate(this.data.sys.createdAt);
-    },
-    contentImage() {
-      if (!this.data.fields) { return null; }
-      return this.data.fields.image.fields.file.url;
-    },
-    contentText() {
-      if (!this.data.fields) { return null; }
-      const limitedText = tools.processRichText(this.data.fields.body, 500);
-      // if (limitedText.charAt(limitedText.length) ===)
-      return `${limitedText}...`;
-    }
-  },
+  computed: articleDataBuilder,
   created() {
     ContentTasks.getArticles(2)
       .then((post) => {

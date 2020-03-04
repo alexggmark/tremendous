@@ -5,7 +5,9 @@ import VueLazyload from 'vue-lazyload'
 
 // Layouts
 import Standard from '@/layouts/Standard'
+import Page from '@/layouts/Page'
 Vue.component('default', Standard);
+Vue.component('page', Page);
 
 Vue.use(VueLazyload);
 

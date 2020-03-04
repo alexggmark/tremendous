@@ -10,16 +10,25 @@ export default new Router({
       path: '/',
       component: () => import('@/components/PageHomepage'),
       meta: {
-        layout: 'default'
+        layout: 'default',
       }
     },
     {
       name: 'Article',
-      path: '/article',
+      path: '/article/:handle',
       component: () => import('@/components/PageArticle'),
       meta: {
-        layout: 'default'
+        layout: 'default',
       }
     },
+    {
+      name: 'Contact',
+      path: '/contact',
+      component: () => import('@/components/PageContact'),
+      meta: {
+        layout: 'page',
+        contentId: '7bV3O9Tl8v48qvSwpuGDFw',
+      }
+    }
   ]
 });

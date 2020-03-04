@@ -1,6 +1,6 @@
 <template>
   <main>
-    <main-article/>
+    <main-article :entry-id="entryId"/>
   </main>
 </template>
 
@@ -10,6 +10,11 @@ import MainArticle from '@/components/MainArticle'
 export default {
   components: {
     MainArticle,
+  },
+  data() {
+    return {
+      entryId: this.$route.params.handle,
+    }
   }
 }
 </script>

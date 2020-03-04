@@ -2,23 +2,17 @@
   <div class="main-article">
     <div class="main-article__container">
       <div class="main-article__main">
-        <div class="main-article__image" :style="{ backgroundImage: 'url(' + imageUrl + ')' }"></div>
+        <div class="main-article__image" v-lazy:background-image="contentImage"></div>
         <div class="main-article__content">
           <h2 class="h1 main-article__title">
-            Five Charts Tell Horror Story of European Market’s Mayhem
+            {{contentTitle}}
           </h2>
-          <span class="main-article__date">24th February 2020</span>
-          <span class="main-article__text-content">
-          <p>The Trump administration’s response to the global coronavirus outbreak has been riven by missteps, including problems developing and distributing a test for the infection and discordant public messages, raising risk that the president’s assertions the virus is contained may be proved wrong.</p>
-          <p>An initial test for the virus developed by the Centers for Disease Control and Prevention was plagued by technical problems and has been in short supply. A decision by the State Department to allow infected Americans to return home from Japan on the same plane as hundreds of uninfected citizens. The Trump administration’s response to the global coronavirus outbreak has been riven by missteps, including problems developing and distributing a test for the infection and discordant public messages, raising risk that the president’s assertions the virus is contained may be proved wrong.</p>
-          <p>An initial test for the virus developed by the Centers for Disease Control and Prevention was plagued by technical problems and has been in short supply. A decision by the State Department to allow infected Americans to return home from Japan on the same plane as hundreds of uninfected citizens.</p>
-          <p>The Trump administration’s response to the global coronavirus outbreak has been riven by missteps, including problems developing and distributing a test for the infection and discordant public messages, raising risk that the president’s assertions the virus is contained may be proved wrong.</p>
-          <p>An initial test for the virus developed by the Centers for Disease Control and Prevention was plagued by technical problems and has been in short supply. A decision by the State Department to allow infected Americans to return home from Japan on the same plane as hundreds of uninfected citizens.</p>
-          </span>
+          <span class="main-article__date">{{contentDate}}</span>
+          <span class="main-article__text-content" v-html="contentText"></span>
         </div>
       </div>
       <div class="main-article__side">
-        <article-block-vertical/>
+       <!--<article-block-vertical/>-->
       </div>
     </div>
   </div>
@@ -26,16 +20,35 @@
 
 <script>
 import ArticleBlockVertical from '@/components/ArticleBlockVertical'
+import {ContentTasks} from '@/common/api'
+import tools, {articleDataBuilder} from '@/common/tools'
 
 export default {
+  props: {
+    entryId: {
+      type: String,
+      required: true,
+    }
+  },
   data() {
     return {
-      imageUrl: require('@/assets/images/burger.jpg'),
+      data: [],
     }
   },
   components: {
-    ArticleBlockVertical,
-  }
+    // ArticleBlockVertical,
+  },
+  computed: articleDataBuilder,
+  created() {
+    ContentTasks.getArticleById(this.entryId)
+      .then((post) => {
+        this.data = post;
+        console.log(post);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  },
 }
 </script>
 

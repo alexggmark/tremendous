@@ -8,9 +8,9 @@
         <div class="home-article__content--inner">
           <span class="h5">{{contentType}}</span>
           <h1 class="h1">
-            <a href="#">
-              {{contentTitle}}
-            </a>
+            <router-link :to="{name: 'Article', params: {handle: contentEntryId}}">
+              {{contentTitleTruncated}}
+            </router-link>
           </h1>
           <span class="home-article__date">{{contentDate}}</span>
           <div class="home-article__more-articles">
@@ -25,7 +25,7 @@
 <script>
 import MoreArticles from '@/components/MoreArticles'
 import {ContentTasks} from '@/common/api'
-import tools from '@/common/tools'
+import {articleDataBuilder} from '@/common/tools'
 
 export default {
   data() {
@@ -37,24 +37,7 @@ export default {
   components: {
     MoreArticles,
   },
-  computed: {
-    contentType() {
-      if (!this.data.sys) { return null; }
-      return this.data.sys.contentType.sys.id;
-    },
-    contentTitle() {
-      if (!this.data.fields) { return null; }
-      return tools.truncateString(this.data.fields.title, 70);
-    },
-    contentDate() {
-      if (!this.data.sys) { return null; }
-      return tools.processDate(this.data.sys.createdAt);
-    },
-    contentImage() {
-      if (!this.data.fields) { return null; }
-      return this.data.fields.image.fields.file.url;
-    }
-  },
+  computed: articleDataBuilder,
   created() {
     ContentTasks.getHomepageArticle()
       .then((post) => {

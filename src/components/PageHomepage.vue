@@ -3,7 +3,7 @@
     <homepage-article/>
     <article-grid/>
     <article-block/>
-    <main-article/>
+    <main-article entry-id="6bYGAJulyCPM7hbHVcgNGu"/>
   </section>
 </template>
 

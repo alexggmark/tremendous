@@ -39,4 +39,7 @@ export const ContentTasks = {
   getArticles(limit) {
     return ApiTasks.getRecentEntries('articles', limit);
   },
+  getArticleById(id) {
+    return ApiTasks.getEntry(id);
+  }
 }
