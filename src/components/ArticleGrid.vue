@@ -56,6 +56,7 @@ export default {
 .article-grid {
   background-color: #fbfbfb;
   border-top: 1px solid $color-grey-light;
+  overflow: auto;
 
   &__container {
     display: flex;

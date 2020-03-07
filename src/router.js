@@ -14,6 +14,14 @@ export default new Router({
       }
     },
     {
+      name: 'Test',
+      path: '/test',
+      component: () => import('@/components/PageTest'),
+      meta: {
+        layout: 'default',
+      }
+    },
+    {
       name: 'Article',
       path: '/article/:handle',
       component: () => import('@/components/PageArticle'),

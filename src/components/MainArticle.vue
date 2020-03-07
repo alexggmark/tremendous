@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import ArticleBlockVertical from '@/components/ArticleBlockVertical'
+// import ArticleBlockVertical from '@/components/ArticleBlockVertical'
 import {ContentTasks} from '@/common/api'
-import tools, {articleDataBuilder} from '@/common/tools'
+import {articleDataBuilder} from '@/common/tools'
 
 export default {
   props: {

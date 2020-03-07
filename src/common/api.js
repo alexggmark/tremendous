@@ -16,18 +16,10 @@ const ApiTasks = {
   getRecentEntries(type, limit) {
     return client.getEntries({
       limit,
+      'content_type': type,
     })
       .then((entries) => entries);
   },
-  getEntryByNumber(type, number) {
-    return client.getEntries({
-      skip: number,
-      limit: 1
-    })
-      .then((entry) => {
-        return entry;
-      });
-  }
 }
 
 export default ApiTasks;
