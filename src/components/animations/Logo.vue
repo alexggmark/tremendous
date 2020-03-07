@@ -15,13 +15,18 @@
       </svg>
     </div>
     <span class="logo__text">
-      <span class="logo__text--logo obj5">tremendous</span>
+      <span class="logo__text--logo obj5" data-splitting="tremendous">tremendous</span>
     </span>
+    <!-- <button @click="setAnimation">Set</button>
+    <button @click="runAnimation">Play</button> -->
   </div>
 </template>
 
 <script>
 import anime from 'animejs/lib/anime.es.js';
+import "splitting/dist/splitting.css";
+import "splitting/dist/splitting-cells.css";
+import splitting from "splitting";
 
 export default {
   data() {
@@ -30,7 +35,7 @@ export default {
       el2: '.obj2',
       el3: '.obj3',
       el4: '.obj4',
-      el5: '.obj5',
+      el5: '.char',
     }
   },
   props: ['animation'],
@@ -50,7 +55,7 @@ export default {
         scale: 0,
       });
       anime.set(this.el5, {
-        translateY: 50.
+        translateY: 50,
       })
     },
     runAnimation() {
@@ -86,7 +91,8 @@ export default {
           targets: this.el5,
           translateY: 0,
           duration: 1000,
-        }, '-=500')
+          delay: anime.stagger(50),
+        }, '-=700')
     }
   },
   watch: {
@@ -96,6 +102,11 @@ export default {
     }
   },
   mounted() {
+    splitting({
+      target: "[data-splitting]",
+      by: "chars",
+      key: null
+    })
     this.setAnimation();
   },
 }
@@ -129,8 +140,6 @@ export default {
 .logo {
   align-items: flex-end;
   display: flex;
-  font-family: 'Lobster', sans-serif;
-  font-size: 45px;
   padding-bottom: $spacing-xs;
 
   &__text {
@@ -141,6 +150,9 @@ export default {
 
     &--logo {
       display: block;
+      font-family: 'Lobster', sans-serif;
+      font-size: 45px;
+      letter-spacing: -1px;
       padding-left: $spacing-sm;
     }
   }
