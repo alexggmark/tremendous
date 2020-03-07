@@ -5,10 +5,8 @@
         <div class="header__navigation">
           <navigation-component/>
         </div>
-        <div class="header__logo">
-          <logo-animation :animation="logoAnimation" />
-          tremendous
-        </div>
+        <logo-animation :animation="logoAnimation" />
+        <!-- <span class="header__logo--logo">tremendous</span> -->
       </div>
     </div>
   </header>
@@ -29,7 +27,9 @@ export default {
     LogoAnimation,
   },
   mounted() {
-    this.logoAnimation = true;
+    this.$nextTick(() => {
+      this.logoAnimation = true;
+    })
   }
 }
 </script>
@@ -49,12 +49,6 @@ export default {
       min-height: 160px;
       position: relative;
       width: 100%;
-    }
-
-    &__logo {
-      display: flex;
-      font-family: 'Lobster', sans-serif;
-      font-size: 45px;
     }
 
     &__navigation {
@@ -88,12 +82,6 @@ export default {
       &__navigation {
         left: 0;
         position: absolute;
-      }
-
-      &__logo {
-        bottom: 0;
-        position: absolute;
-        right: 0;
       }
     }
   }
