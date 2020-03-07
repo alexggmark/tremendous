@@ -1,6 +1,6 @@
 <template>
-  <header>
-    <div class="header" ref="header">
+  <header id="headercontainer">
+    <div class="header" id="header" ref="header">
       <div class="header__container">
         <div class="header__navigation">
           <navigation-component/>
@@ -30,10 +30,15 @@ export default {
     handleScroll() {
       if (window.scrollY > 0) {
         this.$refs.header.classList.add('scrolled');
+        document.getElementsByTagName('body')[0].style.paddingTop = `${this.getHeaderHeight()}px`;
         return;
       }
+      document.getElementsByTagName('body')[0].style.paddingTop = '0px';
       this.$refs.header.classList.remove('scrolled');
     },
+    getHeaderHeight() {
+      return document.getElementById('header').offsetHeight;
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -41,11 +46,10 @@ export default {
     })
   },
   created () {
-    this.debounceHandleScroll = debounce(this.handleScroll);
-    window.addEventListener('scroll', this.debounceHandleScroll);
+    window.addEventListener('scroll', debounce(this.handleScroll));
   },
   destroyed () {
-    window.removeEventListener('scroll', this.debounceHandleScroll);
+    window.removeEventListener('scroll', debounce(this.handleScroll));
   },
 }
 </script>
