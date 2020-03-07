@@ -3,7 +3,7 @@
     <div class="header" ref="header">
       <div class="header__container">
         <div class="header__navigation">
-          <navigation-component :animation="readyState" />
+          <navigation-component/>
         </div>
         <logo-animation :animation="readyState" />
       </div>
@@ -14,6 +14,7 @@
 <script>
 import NavigationComponent from '@/components/Navigation'
 import LogoAnimation from '@/components/animations/Logo'
+import debounce from 'lodash/debounce';
 
 export default {
   data() {
@@ -32,7 +33,7 @@ export default {
         return;
       }
       this.$refs.header.classList.remove('scrolled');
-    }
+    },
   },
   mounted() {
     this.$nextTick(() => {
@@ -40,84 +41,86 @@ export default {
     })
   },
   created () {
-    window.addEventListener('scroll', this.handleScroll);
+    this.debounceHandleScroll = debounce(this.handleScroll);
+    window.addEventListener('scroll', this.debounceHandleScroll);
   },
   destroyed () {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.debounceHandleScroll);
   },
 }
 </script>
 
 <style lang="scss">
-  .header {
-    background-color: $color-background;
-    color: $color-white;
+.header {
+  background-color: $color-background;
+  color: $color-white;
+  width: 100%;
+
+  &.scrolled {
+    position: fixed;
+    top: 0;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    min-height: 160px;
+    padding-bottom: $spacing-sm;
+    position: relative;
+    transition: min-height 0.2s ease, width 0.3s ease-in;
     width: 100%;
 
-    &.scrolled {
-      position: fixed;
-      top: 0;
+    .scrolled & {
+      min-height: 90px;
     }
+  }
 
+  &__navigation {
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+
+      li {
+        font-size: 14px;
+        float: left;
+        margin-right: $spacing-sm;
+
+        a {
+          color: #ffffff;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $width-md) {
     &__container {
-      display: flex;
-      align-items: center;
+      align-items: flex-end;
       flex-flow: row;
-      justify-content: space-between;
-      margin: 0 auto;
-      min-height: 160px;
-      padding-bottom: $spacing-sm;
-      position: relative;
-      transition: min-height 0.2s ease, width 0.3s ease-in;
-      width: 100%;
+      min-height: 120px;
+      width: $width-lg;
 
       .scrolled & {
-        min-height: 70px;
+        min-height: 50px;
       }
     }
 
     &__navigation {
       ul {
-        list-style-type: none;
-        padding-left: 0;
-
-        li {
-          font-size: 14px;
-          float: left;
-          margin-right: $spacing-sm;
-
-          a {
-            color: #ffffff;
-            text-decoration: none;
-
-            &:hover {
-              text-decoration: underline;
-            }
-          }
-        }
-      }
-    }
-
-    @media screen and (min-width: $width-md) {
-      &__container {
-        align-items: flex-end;
-        min-height: 120px;
-        width: $width-lg;
-
-        // .scrolled & {
-        //   width: calc(100% - #{$spacing-md});
-        // }
+        margin-top: 1rem;
       }
 
-      &__navigation {
-        ul {
-          margin-top: 1rem;
-        }
-
-        .scrolled & {
-          bottom: $spacing-sm;
-        }
+      .scrolled & {
+        bottom: $spacing-sm;
       }
     }
   }
+}
 </style>

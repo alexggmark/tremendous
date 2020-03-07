@@ -90,7 +90,7 @@ export default {
         .add({
           targets: this.el5,
           translateY: 0,
-          duration: 1000,
+          duration: 750,
           delay: anime.stagger(50),
         }, '-=700')
     }
@@ -140,6 +140,7 @@ export default {
 .logo {
   align-items: flex-end;
   display: flex;
+  flex-flow: row-reverse;
 
   &__text {
     line-height: 36px;
@@ -152,7 +153,7 @@ export default {
       font-family: 'Lobster', sans-serif;
       font-size: 45px;
       letter-spacing: -1px;
-      padding-left: $spacing-sm;
+      padding: 0 $spacing-sm;
     }
   }
 
@@ -160,6 +161,10 @@ export default {
     height: 20px;
     position: relative;
     width: 75px;
+  }
+
+  @media screen and (min-width: $width-md) {
+    flex-flow: row;
   }
 }
 </style>
