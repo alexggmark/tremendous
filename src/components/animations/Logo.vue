@@ -140,7 +140,6 @@ export default {
 .logo {
   align-items: flex-end;
   display: flex;
-  padding-bottom: $spacing-xs;
 
   &__text {
     line-height: 36px;
@@ -161,12 +160,6 @@ export default {
     height: 20px;
     position: relative;
     width: 75px;
-  }
-
-  @media screen and (min-width: $width-md) {
-    bottom: 0;
-    position: absolute;
-    right: 0;
   }
 }
 </style>
