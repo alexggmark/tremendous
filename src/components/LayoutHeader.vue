@@ -6,7 +6,7 @@
           <navigation-component/>
         </div>
         <div class="header__logo">
-          <!-- <logo-animation/> -->
+          <logo-animation :animation="logoAnimation" />
           tremendous
         </div>
       </div>
@@ -19,9 +19,17 @@ import NavigationComponent from '@/components/Navigation'
 import LogoAnimation from '@/components/animations/Logo'
 
 export default {
+  data() {
+    return {
+      logoAnimation: false,
+    }
+  },
   components: {
     NavigationComponent,
-    // LogoAnimation,
+    LogoAnimation,
+  },
+  mounted() {
+    this.logoAnimation = true;
   }
 }
 </script>

@@ -42,22 +42,22 @@ $color-blue: #0020ff;
 
 @font-face {
   font-family: 'Lobster';
-  src: url('../assets/fonts/Lobster-Regular.ttf') format('truetype');
+  src: url('~@/assets/fonts/Lobster-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Spartan-ExtraBold';
-  src: url('../assets/fonts/Spartan-ExtraBold.ttf') format('truetype');
+  src: url('~@/assets/fonts/Spartan-ExtraBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Spartan-Medium';
-  src: url('../assets/fonts/Spartan-Medium.ttf') format('truetype');
+  src: url('~@/assets/fonts/Spartan-Medium.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Spartan-Thin';
-  src: url('../assets/fonts/Spartan-Light.ttf') format('truetype');
+  src: url('~@/assets/fonts/Spartan-Light.ttf') format('truetype');
 }
 
 html, body {
