@@ -2,16 +2,16 @@
   <div class="logo">
     <div class="logo__shapes">
       <svg class="obj1" height="20" width="20">
-        <circle cx="10" cy="10" r="10" fill="#FF0000"></circle>
+        <circle cx="10" cy="10" r="10" fill="#F2545B"></circle>
       </svg>
       <svg class="obj2" width="30" height="20">
-        <rect width="30" height="20" fill="#00FF0A"></rect>
+        <rect width="30" height="20" fill="#71F79F"></rect>
       </svg>
       <svg class="obj3" height="20" width="20">
-        <circle cx="10" cy="10" r="10" fill="#00FF0A"></circle>
+        <circle cx="10" cy="10" r="10" fill="#71F79F"></circle>
       </svg>
       <svg class="obj4" height="20" width="20">
-        <circle cx="10" cy="10" r="10" fill="#001AFF"></circle>
+        <circle cx="10" cy="10" r="10" fill="#30BCED"></circle>
       </svg>
     </div>
     <span class="logo__text">

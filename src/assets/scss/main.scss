@@ -105,3 +105,11 @@ html, body {
     z-index: -1;
   }
 }
+
+.skeleton {
+  &__image {
+    width: 100%;
+    background-color: $color-grey-light;
+    padding-top: 60%;
+  }
+}

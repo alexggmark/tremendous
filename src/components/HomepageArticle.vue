@@ -2,7 +2,12 @@
   <div class="home-article">
     <div class="home-article__container">
       <div class="home-article__image">
-        <img v-lazy="contentImage">
+        <template v-if="loadedState">
+          <img v-lazy="contentImage">
+        </template>
+        <template v-else>
+          <div class="skeleton__image"></div>
+        </template>
       </div>
       <div class="home-article__content">
         <div class="home-article__content--inner">
@@ -32,6 +37,7 @@ export default {
     return {
       data: [],
       propData: [],
+      loadedState: false,
     }
   },
   components: {
@@ -55,6 +61,11 @@ export default {
         console.log(error);
       })
   },
+  updated() {
+    this.$nextTick(() => {
+      this.loadedState = true;
+    })
+  }
 }
 </script>
 
