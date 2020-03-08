@@ -125,7 +125,11 @@ export default {
   @media screen and (min-width: $width-lg) {
     &__container {
       flex-flow: row;
+      position: relative;
       width: $width-lg;
+      z-index: 0;
+
+      // @include container-shadow;
     }
 
     &__image {

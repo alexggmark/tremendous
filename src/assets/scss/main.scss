@@ -9,14 +9,15 @@ $font-thin: 'Spartan-Thin';
 $font-size-logo: 45px;
 $font-size-xl: 40px;
 $font-size-lg: 25px;
-$font-size-md: 20px;
+$font-size-md: 17px;
 $font-size-sm: 15px;
 $font-size-xs: 12px;
 $font-size-2xs: 10px;
 
 $line-height-xl: 56px;
 $line-height-lg: 36px;
-$line-height-md: 26px;
+$line-height-md: 30px;
+$line-height-sm: 26px;
 
 $spacing-xl: 2.5rem;
 $spacing-lg: 2rem;
@@ -33,12 +34,13 @@ $layout-sm: 30px;
 $layout-margin: 10px;
 
 // $color-background: #0300dc;
-$color-background: #000000;
-$color-black: #000000;
+$color-background: #1b2027;
+$color-black: #1b2027;
 $color-white: #ffffff;
 $color-grey: #B4B4B4;
 $color-grey-light: #e4e4e4;
 $color-blue: #0020ff;
+$color-yellow: #ffc800;
 
 @font-face {
   font-family: 'Lobster';
@@ -87,4 +89,19 @@ html, body {
 
 .shadow {
   box-shadow: 0px 8px 10px rgba(0,0,0,0.08);
+}
+
+@mixin container-shadow {
+  &::before {
+    content: '';
+    display: block;
+    width: calc(100% + 20px);
+    height: 100%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: -10px;
+    box-shadow: 0px 7px 40px 0 rgba(0,0,0,0.1);
+    z-index: -1;
+  }
 }

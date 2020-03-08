@@ -82,7 +82,7 @@ export default {
 
   &__text-content{
     font-size: $font-size-sm;
-    line-height: $line-height-md;
+    line-height: $line-height-sm;
   }
 
   &__bottom-spacer {

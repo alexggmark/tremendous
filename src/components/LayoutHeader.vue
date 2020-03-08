@@ -64,6 +64,7 @@ export default {
     display: flex;
     justify-content: center;
     position: fixed;
+    z-index: 9999;
 
     &--inner {
       display: flex;

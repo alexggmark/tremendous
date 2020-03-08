@@ -2,7 +2,7 @@
   <div class="article-grid">
     <div class="article-grid__container">
       <div class="article-grid__item" v-for="(article, index) in data" :key="index">
-        <div class="article-grid__item--inner shadow">
+        <div class="article-grid__item--inner">
           <h2 class="h2">
             <router-link :to="{name: 'Article', params: {handle: article.entryId}}">
               {{ article.title }}
@@ -54,14 +54,14 @@ export default {
 
 <style lang="scss">
 .article-grid {
-  background-color: #fbfbfb;
-  border-top: 1px solid $color-grey-light;
+  background-color: $color-yellow;
+  color: $color-black;
   overflow: auto;
 
   &__container {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto $layout-sm;
+    margin: $layout-sm auto;
     padding-top: $spacing-sm;
     width: 100%;
   }
@@ -71,7 +71,9 @@ export default {
     width: 50%;
 
     &--inner {
-      background-color: $color-white;
+      border: 2px solid $color-black;
+      box-shadow: 0px 0px 0px 0px rgba(255,255,255,1);
+      box-sizing: content-box;
       cursor: pointer;
       display: flex;
       flex-flow: column;
@@ -81,8 +83,12 @@ export default {
       padding-bottom: $spacing-sm;
       padding-left: $spacing-xs;
       padding-right: $spacing-sm;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
 
       &:hover {
+        box-shadow: 4px 4px 0px 0px rgba(255,255,255,1);
+        transform: translate(-4px, -4px);
+
         a {
           text-decoration: underline;
         }
@@ -96,7 +102,7 @@ export default {
   }
 
   &__date {
-    color: $color-grey;
+    color: $color-black;
     font-size: $font-size-xs;
   }
 

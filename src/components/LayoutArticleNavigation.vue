@@ -25,8 +25,8 @@ export default {
   width: 100%;
 
   &__container {
-    border-bottom: 1px dotted #000000;
-    border-top: 1px dotted #000000;
+    border-bottom: 2px solid #000000;
+    border-top: 2px solid #000000;
     margin: 1rem auto 0;
     width: 100%;
   }
@@ -61,7 +61,10 @@ export default {
 
   @media screen and (min-width: $width-md) {
     &__container {
+      position: relative;
       width: $width-lg;
+
+      // @include container-shadow;
     }
   }
 }

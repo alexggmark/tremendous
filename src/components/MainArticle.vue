@@ -54,6 +54,7 @@ export default {
 
 <style lang="scss">
 .main-article {
+  color: $color-black;
   padding-bottom: $spacing-xl;
 
   &__container {
@@ -90,7 +91,7 @@ export default {
   }
 
   &__text-content{
-    font-size: $font-size-sm;
+    font-size: $font-size-md;
     line-height: $line-height-md;
   }
 

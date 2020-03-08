@@ -19,8 +19,8 @@ export default {
 
 <style lang="scss">
 .footer {
-  background-color: $color-background;
-  color: $color-white;
+  background-color: $color-yellow;
+  color: $color-black;
 
   &__container {
     display: flex;
