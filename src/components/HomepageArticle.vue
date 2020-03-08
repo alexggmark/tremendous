@@ -122,7 +122,7 @@ export default {
     }
   }
 
-  @media screen and (min-width: $width-md) {
+  @media screen and (min-width: $width-lg) {
     &__container {
       flex-flow: row;
       width: $width-lg;

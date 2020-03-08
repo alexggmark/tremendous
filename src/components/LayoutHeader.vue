@@ -2,10 +2,12 @@
   <header>
     <div class="header" ref="header">
       <div class="header__container">
-        <div class="header__navigation">
-          <navigation-component/>
+        <div class="header__container--inner">
+          <div class="header__navigation">
+            <navigation-component/>
+          </div>
+          <logo-animation :animation="readyState" />
         </div>
-        <logo-animation :animation="readyState" />
       </div>
     </div>
   </header>
@@ -52,29 +54,28 @@ export default {
 
 <style lang="scss">
 .header {
-  background-color: $color-background;
   color: $color-white;
+  transition: min-height 0.4s ease;
   width: 100%;
 
-  &.scrolled {
-    position: fixed;
-    top: 0;
-  }
-
   &__container {
-    display: flex;
-    align-items: center;
-    flex-flow: column;
-    justify-content: space-between;
-    margin: 0 auto;
-    min-height: 160px;
-    padding-bottom: $spacing-sm;
-    position: relative;
-    transition: min-height 0.2s ease, width 0.3s ease-in;
+    background-color: $color-background;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
 
-    .scrolled & {
-      min-height: 90px;
+    &--inner {
+      display: flex;
+      align-items: center;
+      flex-flow: column;
+      justify-content: space-between;
+      margin: 0 auto;
+      min-height: 140px;
+      padding-bottom: $spacing-sm;
+      top: 0;
+      transition: min-height 0.4s ease, width 0.3s ease-in;
+      width: 100%;
     }
   }
 
@@ -100,15 +101,26 @@ export default {
     }
   }
 
-  @media screen and (min-width: $width-md) {
-    &__container {
-      align-items: flex-end;
-      flex-flow: row;
-      min-height: 120px;
-      width: $width-lg;
+  @media screen and (min-width: $width-lg) {
+    display: flex;
+    justify-content: center;
+    min-height: 140px;
+    padding-bottom: $spacing-sm;
+    width: 100%;
 
-      .scrolled & {
-        min-height: 50px;
+    &.scrolled {
+      min-height: 50px;
+    }
+
+    &__container {
+      &--inner {
+        align-items: flex-end;
+        flex-flow: row;
+        width: $width-lg;
+
+        .scrolled & {
+          min-height: 50px;
+        }
       }
     }
 

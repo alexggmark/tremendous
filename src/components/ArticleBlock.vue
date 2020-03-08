@@ -93,7 +93,7 @@ export default {
     width: 100%;
   }
 
-  @media screen and (min-width: $width-md) {
+  @media screen and (min-width: $width-lg) {
     &__container {
       flex-flow: row;
       padding: $layout-md 0;
