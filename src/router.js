@@ -3,12 +3,14 @@ import Router from "vue-router";
 
 Vue.use(Router);
 
+import PageHomepage from '@/components/PageHomepage';
+
 export default new Router({
   routes: [
     {
       name: 'Home',
       path: '/',
-      component: () => import('@/components/PageHomepage'),
+      component: PageHomepage,
       meta: {
         layout: 'default',
       }

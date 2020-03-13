@@ -2,13 +2,41 @@
   <div class="main-article">
     <div class="main-article__container">
       <div class="main-article__main">
-        <div class="main-article__image" v-lazy:background-image="contentImage"></div>
+        <button @click="loadedState = !loadedState">Click</button>
+        <!-- <h1>{{data}}</h1> -->
+        {{loadedState}}
+        {{data.fields.title}}
+        <template v-if="loadedState">
+          <div class="main-article__image image" v-lazy:background-image="contentImage"></div>
+        </template>
+        <template v-else>
+          <div class="skeleton--image"></div>
+        </template>
         <div class="main-article__content">
-          <h2 class="h1 main-article__title">
-            {{contentTitle}}
-          </h2>
-          <span class="main-article__date">{{contentDate}}</span>
-          <span class="main-article__text-content" v-html="contentText"></span>
+          <template v-if="loadedState">
+            <h2 class="h1 main-article__title">
+              {{data.fields.title}}
+            </h2>
+          </template>
+          <template v-else>
+            <div class="skeleton--spacer-lg"></div>
+            <div v-for="i in 3" class="skeleton--title" :key="i"></div>
+          </template>
+          <span class="main-article__date">
+            <template v-if="loadedState">
+              {{contentDate}}
+            </template>
+            <template v-else>
+              <div class="skeleton--spacer-lg"></div>
+              <div class="skeleton--subtitle-sm"></div>
+            </template>
+          </span>
+          <template v-if="loadedState">
+            <span class="main-article__text-content" v-html="contentText"></span>
+          </template>
+          <template v-else>
+            <div v-for="i in 20" class="skeleton--text" :key="'skeleton-text' + i"></div>
+          </template>
         </div>
       </div>
       <div class="main-article__side">
@@ -33,10 +61,8 @@ export default {
   data() {
     return {
       data: [],
+      loadedState: false,
     }
-  },
-  components: {
-    // ArticleBlockVertical,
   },
   computed: articleDataBuilder,
   created() {
@@ -49,6 +75,13 @@ export default {
         console.log(error);
       })
   },
+  updated() {
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.loadedState = true;
+      }, 800);
+    })
+  }
 }
 </script>
 
@@ -95,6 +128,10 @@ export default {
     line-height: $line-height-md;
   }
 
+  .skeleton--image {
+    height: 420px;
+  }
+
   @media screen and (min-width: $width-lg) {
     &__container {
       flex-flow: row;
@@ -111,6 +148,10 @@ export default {
     }
 
     &__image {
+      height: 320px;
+    }
+
+    .skeleton--image {
       height: 320px;
     }
   }

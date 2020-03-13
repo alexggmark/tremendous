@@ -1,9 +1,14 @@
 <template>
-  <ul>
+  <ul v-if="loadedState">
     <li v-for="(article, index) in moreArticles" :key="index">
       <router-link :to="{name: 'Article', params: {handle: article.entryId}}">
         {{ article.title }}
       </router-link>
+    </li>
+  </ul>
+  <ul v-else>
+    <li v-for="i in 3" :key="i">
+      <div class="skeleton--title-sm"></div>
     </li>
   </ul>
 </template>
@@ -15,6 +20,10 @@ export default {
   props: {
     dataList: {
       type: Array,
+      required: true,
+    },
+    loadedState: {
+      type: Boolean,
       required: true,
     }
   },

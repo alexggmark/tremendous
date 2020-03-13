@@ -1,18 +1,23 @@
 <template>
   <div class="article-grid">
     <div class="article-grid__container">
-      <div class="article-grid__item" v-for="(article, index) in data" :key="index">
-        <div class="article-grid__item--inner">
-          <h2 class="h2">
-            <router-link :to="{name: 'Article', params: {handle: article.entryId}}">
-              {{ article.title }}
-            </router-link>
-          </h2>
-          <span class="article-grid__date">
-            {{ article.date }}
-          </span>
+      <template v-if="loadedState">
+        <div class="article-grid__item" v-for="(article, index) in data" :key="index">
+          <div class="article-grid__item--inner">
+            <h2 class="h2">
+              <router-link :to="{name: 'Article', params: {handle: article.entryId}}">
+                {{ article.title }}
+              </router-link>
+            </h2>
+            <span class="article-grid__date">
+              {{ article.date }}
+            </span>
+          </div>
         </div>
-      </div>
+      </template>
+      <template v-else>
+        <div class="skeleton--block" v-for="i in 4" :key="'skeleton-block' + i"></div>
+      </template>
     </div>
   </div>
 </template>
@@ -25,6 +30,7 @@ export default {
   data() {
     return {
       data: [],
+      loadedState: true,
     }
   },
   methods: {
@@ -49,6 +55,11 @@ export default {
         console.log(error);
       })
   },
+  updated() {
+    this.$nextTick(() => {
+      this.loadedState = true;
+    })
+  }
 }
 </script>
 

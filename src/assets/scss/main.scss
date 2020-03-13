@@ -25,7 +25,7 @@ $spacing-md: 1.5rem;
 $spacing-sm: 1rem;
 $spacing-xs: 0.65rem;
 $spacing-2xs: 0.4rem;
-$spacing-3xs: 0.3rem;
+$spacing-3xs: 0.2rem;
 
 $layout-lg: 115px;
 $layout-md: 60px;
@@ -42,30 +42,18 @@ $color-grey-light: #e4e4e4;
 $color-blue: #0020ff;
 $color-yellow: #ffc800;
 
-@font-face {
-  font-family: 'Lobster';
-  src: url('~@/assets/fonts/Lobster-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Spartan-ExtraBold';
-  src: url('~@/assets/fonts/Spartan-ExtraBold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Spartan-Medium';
-  src: url('~@/assets/fonts/Spartan-Medium.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Spartan-Thin';
-  src: url('~@/assets/fonts/Spartan-Light.ttf') format('truetype');
-}
+@import 'fonts';
+@import 'skeleton';
 
 html, body {
   margin: 0;
   padding: 0;
   font-family: 'Spartan-Thin', sans-serif;
+}
+
+.visually-hidden {
+  height: 0;
+  visibility: hidden;
 }
 
 .h1 {
@@ -103,13 +91,5 @@ html, body {
     left: -10px;
     box-shadow: 0px 7px 40px 0 rgba(0,0,0,0.1);
     z-index: -1;
-  }
-}
-
-.skeleton {
-  &__image {
-    width: 100%;
-    background-color: $color-grey-light;
-    padding-top: 60%;
   }
 }

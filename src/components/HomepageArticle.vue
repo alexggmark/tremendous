@@ -1,25 +1,43 @@
 <template>
   <div class="home-article">
     <div class="home-article__container">
+      <!-- <button @click="loadedState = !loadedState">Click</button> -->
       <div class="home-article__image">
         <template v-if="loadedState">
-          <img v-lazy="contentImage">
+          <div class="image" v-lazy:background-image="contentImage"></div>
         </template>
         <template v-else>
-          <div class="skeleton__image"></div>
+          <div class="skeleton--image"></div>
         </template>
       </div>
       <div class="home-article__content">
         <div class="home-article__content--inner">
-          <span class="h5">{{contentType}}</span>
-          <h1 class="h1">
-            <router-link :to="{name: 'Article', params: {handle: contentEntryId}}">
-              {{contentTitleTruncated}}
-            </router-link>
-          </h1>
-          <span class="home-article__date">{{contentDate}}</span>
+          <template v-if="loadedState">
+            <span class="h5">{{contentType}}</span>
+          </template>
+          <template v-else>
+            <div class="skeleton--subtitle-sm"></div>
+          </template>
+          <template v-if="loadedState">
+            <h1 class="h1">
+              <router-link :to="{name: 'Article', params: {handle: contentEntryId}}">
+                {{contentTitleTruncated}}
+              </router-link>
+            </h1>
+          </template>
+          <template v-else>
+            <div class="skeleton--spacer-md"></div>
+            <div v-for="i in 4" class="skeleton--title" :key="i"></div>
+          </template>
+          <template v-if="loadedState">
+            <span class="home-article__date">{{contentDate}}</span>
+          </template>
+          <template v-else>
+            <div class="skeleton--spacer-lg"></div>
+            <div class="skeleton--subtitle-sm"></div>
+          </template>
           <div class="home-article__more-articles">
-            <more-articles :data-list="propData"/>
+            <more-articles :data-list="propData" :loaded-state="loadedState" />
           </div>
         </div>
       </div>
@@ -63,7 +81,9 @@ export default {
   },
   updated() {
     this.$nextTick(() => {
-      this.loadedState = true;
+      setTimeout(() => {
+        this.loadedState = true;
+      }, 800);
     })
   }
 }
@@ -82,8 +102,14 @@ export default {
   &__image {
     width: 100%;
 
-    img {
-      width: 100%;
+    .image {
+      background-position: center;
+      background-size: cover;
+      height: 550px;
+    }
+
+    .skeleton--image {
+      height: 550px;
     }
   }
 
@@ -146,8 +172,12 @@ export default {
     &__image {
       width: 50%;
 
-      img {
-        width: 100%;
+      .image {
+        height: 350px;
+      }
+
+      .skeleton--image {
+        height: 350px;
       }
     }
 
