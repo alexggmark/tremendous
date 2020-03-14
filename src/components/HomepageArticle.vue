@@ -37,7 +37,7 @@
             <div class="skeleton--subtitle-sm"></div>
           </template>
           <div class="home-article__more-articles">
-            <more-articles :data-list="propData" :loaded-state="loadedState" />
+            <more-articles :data-list="propData" :loaded-state="loadedState2" />
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
 
 <script>
 import MoreArticles from '@/components/MoreArticles'
-import {ContentTasks} from '@/common/api'
+import {ContentTasks, loadingTime} from '@/common/api'
 import {articleDataBuilder} from '@/common/tools'
 
 export default {
@@ -56,6 +56,7 @@ export default {
       data: [],
       propData: [],
       loadedState: false,
+      loadedState2: false,
     }
   },
   components: {
@@ -66,11 +67,16 @@ export default {
     ContentTasks.getHomepageArticle()
       .then((post) => {
         this.data = post.items[0];
-        console.log(post);
       })
       .catch((error) => {
         console.log(error);
       })
+      .finally(() => {
+        setTimeout(() => {
+          this.loadedState = true;
+        }, loadingTime)
+      })
+
     ContentTasks.getArticles(3)
       .then((post) => {
         this.propData = post.items;
@@ -78,13 +84,11 @@ export default {
       .catch((error) => {
         console.log(error);
       })
-  },
-  updated() {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.loadedState = true;
-      }, 800);
-    })
+      .finally(() => {
+        setTimeout(() => {
+          this.loadedState2 = true;
+        }, loadingTime)
+      })
   }
 }
 </script>

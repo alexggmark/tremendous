@@ -35,3 +35,5 @@ export const ContentTasks = {
     return ApiTasks.getEntry(id);
   }
 }
+
+export const loadingTime = 1000;

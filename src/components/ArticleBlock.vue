@@ -2,27 +2,43 @@
   <div class="article-block">
     <div class="article-block__container">
       <div class="article-block__content">
-        <h2 class="h1 article-block__title">
-          {{contentTitle}}
-        </h2>
-        <span class="article-block__date">{{contentDate}}</span>
-        <span class="article-block__text-content" v-html="contentTextTruncated">
-        </span>
+        <template v-if="loadedState">
+          <h2 class="h1 article-block__title">
+            {{contentTitle}}
+          </h2>
+          <span class="article-block__date">{{contentDate}}</span>
+          <span class="article-block__text-content" v-html="contentTextTruncated">
+          </span>
+        </template>
+        <template v-else>
+          <div v-for="i in 4"  class="skeleton--title" :key="'block-title' + i"></div>
+          <div class="skeleton--spacer-md"></div>
+          <div class="skeleton--subtitle-sm"></div>
+          <div v-for="i in 8" class="skeleton--text" :key="'block-text' + i"></div>
+        </template>
       </div>
-      <div class="article-block__image" v-lazy:background-image="contentImage"></div>
+      <div class="article-block__image">
+        <template v-if="loadedState">
+          <div class="image" v-lazy:background-image="contentImage"></div>
+        </template>
+        <template v-else>
+          <div class="skeleton--image"></div>
+        </template>
+      </div>
     </div>
     <div class="article-block__bottom-spacer"></div>
   </div>
 </template>
 
 <script>
-import {ContentTasks} from '@/common/api'
+import {ContentTasks, loadingTime} from '@/common/api'
 import {articleDataBuilder} from '@/common/tools'
 
 export default {
   data() {
     return {
       data: [],
+      loadedState: false,
     }
   },
   computed: articleDataBuilder,
@@ -33,6 +49,11 @@ export default {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          this.loadedState = true;
+        }, loadingTime)
       })
   },
 }
@@ -52,13 +73,16 @@ export default {
   }
 
   &__image {
-    background-size: cover;
-    background-position: center;
-    height: 360px;
     width: 100%;
 
-    img {
-      width: 100%;
+    .image {
+      background-position: center;
+      background-size: cover;
+      height: 550px;
+    }
+
+    .skeleton--image {
+      height: 550px;
     }
   }
 
@@ -101,11 +125,14 @@ export default {
     }
 
     &__image {
-      padding-top: $spacing-lg;
       width: 50%;
 
-      img {
-        width: 100%;
+      .image {
+        height: 350px;
+      }
+
+      .skeleton--image {
+        height: 350px;
       }
     }
 

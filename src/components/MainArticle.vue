@@ -2,10 +2,6 @@
   <div class="main-article">
     <div class="main-article__container">
       <div class="main-article__main">
-        <button @click="loadedState = !loadedState">Click</button>
-        <!-- <h1>{{data}}</h1> -->
-        {{loadedState}}
-        {{data.fields.title}}
         <template v-if="loadedState">
           <div class="main-article__image image" v-lazy:background-image="contentImage"></div>
         </template>
@@ -19,7 +15,7 @@
             </h2>
           </template>
           <template v-else>
-            <div class="skeleton--spacer-lg"></div>
+            <div class="skeleton--spacer-md"></div>
             <div v-for="i in 3" class="skeleton--title" :key="i"></div>
           </template>
           <span class="main-article__date">
@@ -27,7 +23,7 @@
               {{contentDate}}
             </template>
             <template v-else>
-              <div class="skeleton--spacer-lg"></div>
+              <div class="skeleton--spacer-md"></div>
               <div class="skeleton--subtitle-sm"></div>
             </template>
           </span>
@@ -48,7 +44,7 @@
 
 <script>
 // import ArticleBlockVertical from '@/components/ArticleBlockVertical'
-import {ContentTasks} from '@/common/api'
+import {ContentTasks, loadingTime} from '@/common/api'
 import {articleDataBuilder} from '@/common/tools'
 
 export default {
@@ -69,18 +65,15 @@ export default {
     ContentTasks.getArticleById(this.entryId)
       .then((post) => {
         this.data = post;
-        console.log(post);
       })
       .catch((error) => {
         console.log(error);
       })
-  },
-  updated() {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.loadedState = true;
-      }, 800);
-    })
+      .finally(() => {
+        setTimeout(() => {
+          this.loadedState = true;
+        }, loadingTime)
+      })
   }
 }
 </script>

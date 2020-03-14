@@ -67,11 +67,11 @@ $randomNumber: 0;
     @include skeleton-border-radius;
     background-color: $color-grey-light;
     padding-top: 25%;
-    margin: 5px;
-    width: calc(50% - 10px);
+    margin-right: $spacing-xs;
+    width: calc(50% - #{$spacing-2xs});
 
     @media screen and (min-width: $width-md) {
-      width: calc(25% - 10px);
+      width: calc(25% - #{$spacing-xs});
     }
   }
 

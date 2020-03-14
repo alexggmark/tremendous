@@ -13,18 +13,15 @@ import LayoutArticleNavigation from '@/components/LayoutArticleNavigation'
 import LayoutFooter from '@/components/LayoutFooter'
 
 export default {
-  data() {
-    return {
-      info: true,
-    }
-  },
   components: {
     LayoutHeader,
     LayoutArticleNavigation,
     LayoutFooter,
   },
   updated() {
-    this.info = false;
+    this.$nextTick(() => {
+      this.loadedState = true;
+    })
   }
 }
 </script>

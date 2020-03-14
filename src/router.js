@@ -4,6 +4,12 @@ import Router from "vue-router";
 Vue.use(Router);
 
 import PageHomepage from '@/components/PageHomepage';
+import PageTest from '@/components/PageTest';
+import PageArticle from '@/components/PageArticle';
+import PageContact from '@/components/PageContact';
+
+
+PageArticle
 
 export default new Router({
   routes: [
@@ -18,7 +24,7 @@ export default new Router({
     {
       name: 'Test',
       path: '/test',
-      component: () => import('@/components/PageTest'),
+      component: PageTest,
       meta: {
         layout: 'default',
       }
@@ -26,7 +32,7 @@ export default new Router({
     {
       name: 'Article',
       path: '/article/:handle',
-      component: () => import('@/components/PageArticle'),
+      component: PageArticle,
       meta: {
         layout: 'default',
       }
@@ -34,7 +40,7 @@ export default new Router({
     {
       name: 'Contact',
       path: '/contact',
-      component: () => import('@/components/PageContact'),
+      component: PageContact,
       meta: {
         layout: 'page',
         contentId: '7bV3O9Tl8v48qvSwpuGDFw',

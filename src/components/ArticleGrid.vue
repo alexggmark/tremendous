@@ -23,14 +23,14 @@
 </template>
 
 <script>
-import {ContentTasks} from '@/common/api'
+import {ContentTasks, loadingTime} from '@/common/api'
 import tools from '@/common/tools'
 
 export default {
   data() {
     return {
       data: [],
-      loadedState: true,
+      loadedState: false,
     }
   },
   methods: {
@@ -49,16 +49,15 @@ export default {
     ContentTasks.getArticles(7)
       .then((post) => {
         this.set(post.items);
-        console.log(post);
       })
       .catch((error) => {
         console.log(error);
       })
-  },
-  updated() {
-    this.$nextTick(() => {
-      this.loadedState = true;
-    })
+      .finally(() => {
+        setTimeout(() => {
+          this.loadedState = true;
+        }, loadingTime)
+      })
   }
 }
 </script>
