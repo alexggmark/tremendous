@@ -4,7 +4,7 @@
       <div class="header__container">
         <div class="header__container--inner">
           <div class="header__navigation">
-            <navigation-component/>
+            <navigation-component :navigation-links="navigation" />
           </div>
           <logo-animation :animation="readyState" />
         </div>
@@ -22,6 +22,25 @@ export default {
   data() {
     return {
       readyState: false,
+      navigation: [
+        {
+          title: 'Home',
+          name: 'Home',
+        },
+        {
+          title: 'Contact',
+          type: 'Contact',
+          id: '7bV3O9Tl8v48qvSwpuGDFw'
+        },
+        {
+          title: 'Test3',
+          type: 'Experiment1',
+        },
+        {
+          title: 'Test4',
+          type: 'Experiment2',
+        },
+      ]
     }
   },
   components: {

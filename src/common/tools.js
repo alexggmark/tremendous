@@ -55,17 +55,3 @@ export const articleDataBuilder = {
     return this.data.sys.id;
   }
 }
-
-export const pageDataBuilder = {
-  pageContentId() {
-    return this.$route.meta.contentId;
-  },
-  pageTitle() {
-    if (!this.data.fields) { return null; }
-    return this.data.fields.title;
-  },
-  pageText() {
-    if (!this.data.fields) { return null; }
-    return tools.processRichText(this.data.fields.content);
-  },
-}

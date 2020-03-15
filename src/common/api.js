@@ -36,4 +36,4 @@ export const ContentTasks = {
   }
 }
 
-export const loadingTime = 1000;
+export const loadingTime = 200;

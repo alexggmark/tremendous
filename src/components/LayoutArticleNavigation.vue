@@ -2,7 +2,7 @@
   <div>
     <div class="article-navigation">
       <div class="article-navigation__container">
-        <span class="article-navigation__menu-title">Menu:</span> <navigation-component/>
+        <span class="article-navigation__menu-title">Social:</span> <navigation-component :navigation-links="navigation"/>
       </div>
     </div>
   </div>
@@ -14,6 +14,28 @@ import Navigation from '@/components/Navigation'
 export default {
   components: {
     navigationComponent: Navigation,
+  },
+  data () {
+    return {
+      navigation: [
+        {
+          title: 'LinkedIn',
+          url: 'https://www.google.com',
+        },
+        {
+          title: 'Dribbble',
+          url: 'google.com',
+        },
+        {
+          title: 'Medium',
+          url: 'google.com',
+        },
+        {
+          title: 'Wikipedia',
+          url: 'google.com',
+        },
+      ]
+    }
   }
 }
 </script>

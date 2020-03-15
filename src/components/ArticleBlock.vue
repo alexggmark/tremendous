@@ -61,8 +61,8 @@ export default {
 
 <style lang="scss">
 .article-block {
-  background-color: $color-background;
-  color: $color-white;
+  background-color: $color-secondary;
+  color: $color-black;
 
   &__container {
     display: flex;
@@ -95,8 +95,8 @@ export default {
   }
 
   &__date {
-    border-bottom: 1px solid $color-white;
-    color: $color-white;
+    border-bottom: 1px solid $color-black;
+    color: $color-black;
     display: block;
     font-family: $font-medium;
     font-size: $font-size-2xs;
@@ -111,9 +111,8 @@ export default {
 
   &__bottom-spacer {
     background-color: #ffffff;
-    border-bottom: 1px dotted #000000;
-    height: 4px;
-    margin-bottom: 4px;
+    border-bottom: 2px solid #000000;
+    margin-bottom: $spacing-md;
     width: 100%;
   }
 

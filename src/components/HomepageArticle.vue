@@ -131,7 +131,7 @@ export default {
   }
 
   &__date {
-    background-color: $color-blue;
+    background-color: $color-primary;
     color: $color-white;
     font-family: $font-medium;
     font-size: $font-size-2xs;

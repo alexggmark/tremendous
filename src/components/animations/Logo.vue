@@ -5,10 +5,10 @@
         <circle cx="10" cy="10" r="10" fill="#da7a7e"></circle>
       </svg>
       <svg class="obj2" width="30" height="20">
-        <rect width="30" height="20" fill="#7dd69b"></rect>
+        <rect width="30" height="20" fill="#00ffb8"></rect>
       </svg>
       <svg class="obj3" height="20" width="20">
-        <circle cx="10" cy="10" r="10" fill="#7dd69b"></circle>
+        <circle cx="10" cy="10" r="10" fill="#00ffb8"></circle>
       </svg>
       <svg class="obj4" height="20" width="20">
         <circle cx="10" cy="10" r="10" fill="#62b3d0"></circle>

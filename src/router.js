@@ -6,7 +6,7 @@ Vue.use(Router);
 import PageHomepage from '@/components/PageHomepage';
 import PageTest from '@/components/PageTest';
 import PageArticle from '@/components/PageArticle';
-import PageContact from '@/components/PageContact';
+import PageType from '@/components/PageType';
 
 
 PageArticle
@@ -38,12 +38,11 @@ export default new Router({
       }
     },
     {
-      name: 'Contact',
-      path: '/contact',
-      component: PageContact,
+      name: 'Page',
+      path: '/page/:type/:id',
+      component: PageType,
       meta: {
-        layout: 'page',
-        contentId: '7bV3O9Tl8v48qvSwpuGDFw',
+        layout: 'default',
       }
     }
   ]

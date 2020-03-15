@@ -34,18 +34,20 @@ $layout-sm: 30px;
 $layout-margin: 10px;
 
 // $color-background: #0300dc;
-$color-background: #1b2027;
-$color-black: #1b2027;
+$color-background: #141415;
+$color-black: #000000;
 $color-white: #ffffff;
 $color-grey: #B4B4B4;
 $color-grey-light: #e4e4e4;
-$color-blue: #0020ff;
-$color-yellow: #ffc800;
+$color-primary: #0020ff;
+$color-secondary: #00ffb8;
+$color-tertiary: #fff2f4;
 
 @import 'fonts';
 @import 'skeleton';
 
 html, body {
+  background-color: $color-tertiary;
   margin: 0;
   padding: 0;
   font-family: 'Spartan-Thin', sans-serif;
@@ -69,6 +71,10 @@ html, body {
   line-height: $line-height-lg;
 }
 
+.h3 {
+  font-family: $font-medium;
+}
+
 .h5 {
   color: $color-grey;
   font-family: $font-thin;
@@ -76,7 +82,7 @@ html, body {
 }
 
 .shadow {
-  box-shadow: 0px 8px 10px rgba(0,0,0,0.08);
+  box-shadow: 0px 8px 10px rgba(0,0,0,0.04);
 }
 
 @mixin container-shadow {

@@ -3,16 +3,16 @@
     <div class="article-grid__container">
       <template v-if="loadedState">
         <div class="article-grid__item" v-for="(article, index) in data" :key="index">
-          <div class="article-grid__item--inner">
-            <h2 class="h2">
-              <router-link :to="{name: 'Article', params: {handle: article.entryId}}">
+          <router-link :to="{name: 'Article', params: {handle: article.entryId}}">
+            <div class="article-grid__item--inner">
+              <h2 class="h2">
                 {{ article.title }}
-              </router-link>
-            </h2>
-            <span class="article-grid__date">
-              {{ article.date }}
-            </span>
-          </div>
+              </h2>
+              <span class="article-grid__date">
+                {{ article.date }}
+              </span>
+            </div>
+          </router-link>
         </div>
       </template>
       <template v-else>
@@ -64,8 +64,8 @@ export default {
 
 <style lang="scss">
 .article-grid {
-  background-color: $color-yellow;
-  color: $color-black;
+  background-color: $color-background;
+  color: $color-white;
   overflow: auto;
 
   &__container {
@@ -80,8 +80,12 @@ export default {
     margin-bottom: $spacing-lg;
     width: 50%;
 
+    a {
+      text-decoration: none;
+    }
+
     &--inner {
-      border: 2px solid $color-black;
+      border: 2px solid $color-white;
       box-shadow: 0px 0px 0px 0px rgba(255,255,255,1);
       box-sizing: content-box;
       cursor: pointer;
@@ -99,20 +103,19 @@ export default {
         box-shadow: 4px 4px 0px 0px rgba(255,255,255,1);
         transform: translate(-4px, -4px);
 
-        a {
+        h2 {
           text-decoration: underline;
         }
       }
 
-      a {
-        color: $color-black;
-        text-decoration: none;
+      a & {
+        color: $color-white;
       }
     }
   }
 
   &__date {
-    color: $color-black;
+    color: $color-white;
     font-size: $font-size-xs;
   }
 
