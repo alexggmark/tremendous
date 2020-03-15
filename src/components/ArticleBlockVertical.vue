@@ -1,50 +1,75 @@
 <template>
   <div class="article-vertical">
-    <div class="article-vertical__item" v-for="(article, index) in articleGrid" :key="index">
-      <div class="article-vertical__item--inner">
-        <h2 class="h2">
-          <a href="#">
-            {{ article.title }}
-          </a>
-        </h2>
-        <span class="article-vertical__date">
-          {{ article.date }}
-        </span>
-      </div>
+    <div class="article-vertical__item" v-for="(article, index) in data" :key="index">
+      <router-link :to="{name: 'Article', params: {handle: article.entryId}}">
+        <div class="article-vertical__item--inner">
+          <h2 class="h2">
+            <a href="#">
+              {{ article.title }}
+            </a>
+          </h2>
+          <span class="article-vertical__date">
+            {{ article.date }}
+          </span>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
+import {ContentTasks, loadingTime} from '@/common/api'
+import tools from '@/common/tools'
+
 export default {
   data() {
     return {
-      articleGrid: [
-        {
-          title: 'Cases Spread in Western U.S., Jump in Iran, Korea: Virus',
-          date: '22nd February 2020',
-        },
-        {
-          title: 'Five Charts Tell Horror Story of European Market’s Mayhem',
-          date: '22nd February 2020',
-        },
-        {
-          title: 'China Posts Weakest Factory Activity on Record',
-          date: '22nd February 2020',
-        },
-      ]
+      data: [],
+      loadedState: false,
     }
+  },
+  methods: {
+    set(items) {
+      const output = items.map((item) => {
+        return {
+          title: tools.truncateString(item.fields.title, 60),
+          date: tools.processDate(item.sys.createdAt),
+          entryId: item.sys.id,
+        };
+      });
+      this.data = output;
+    }
+  },
+  created() {
+    ContentTasks.getArticles(4)
+      .then((post) => {
+        this.set(post.items);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          this.loadedState = true;
+        }, loadingTime)
+      })
   }
 }
 </script>
 
 <style lang="scss">
 .article-vertical {
-  padding: 0 0 0 $spacing-lg;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 $spacing-md;
 
   &__item {
     margin-bottom: $spacing-md;
-    width: 100%;
+    width: 50%;
+
+    a {
+      text-decoration: none;
+    }
 
     &--inner {
       border-bottom: 1px dotted $color-black;
@@ -73,6 +98,25 @@ export default {
   &__date {
     color: $color-grey;
     font-size: $font-size-xs;
+  }
+
+  @media screen and (min-width: $width-md) {
+    flex-flow: row;
+
+    &__item {
+      margin-bottom: $spacing-md;
+      width: 25%;
+    }
+  }
+
+  @media screen and (min-width: $width-lg) {
+    flex-flow: column;
+    padding: 0 $spacing-sm 0 0;
+
+    &__item {
+      margin-bottom: $spacing-md;
+      width: 100%;
+    }
   }
 }
 </style>

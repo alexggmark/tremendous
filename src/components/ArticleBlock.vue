@@ -111,7 +111,6 @@ export default {
 
   &__bottom-spacer {
     background-color: #ffffff;
-    border-bottom: 2px solid #000000;
     margin-bottom: $spacing-md;
     width: 100%;
   }

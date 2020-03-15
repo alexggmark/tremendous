@@ -1,6 +1,6 @@
 <template>
   <main>
-    <main-article :entry-id="entryId"/>
+    <main-article :entry-id="entryId" :key="entryId" />
   </main>
 </template>
 
@@ -14,6 +14,11 @@ export default {
   data() {
     return {
       entryId: this.$route.params.handle,
+    }
+  },
+  watch: {
+    $route(to) {
+      this.entryId = to.params.handle;
     }
   }
 }

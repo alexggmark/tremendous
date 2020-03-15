@@ -36,14 +36,14 @@
         </div>
       </div>
       <div class="main-article__side">
-       <!--<article-block-vertical/>-->
+       <article-block-vertical/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import ArticleBlockVertical from '@/components/ArticleBlockVertical'
+import ArticleBlockVertical from '@/components/ArticleBlockVertical'
 import {ContentTasks, loadingTime} from '@/common/api'
 import {articleDataBuilder} from '@/common/tools'
 
@@ -61,6 +61,9 @@ export default {
     }
   },
   computed: articleDataBuilder,
+  components: {
+    ArticleBlockVertical,
+  },
   created() {
     ContentTasks.getArticleById(this.entryId)
       .then((post) => {
@@ -85,6 +88,7 @@ export default {
 
   &__container {
     display: flex;
+    flex-flow: column;
     margin: 0 auto;
     width: 100%;
   }
@@ -94,7 +98,7 @@ export default {
   }
 
   &__side {
-    display: none;
+    width: 100%;
   }
 
   &__image {
@@ -127,7 +131,7 @@ export default {
 
   @media screen and (min-width: $width-lg) {
     &__container {
-      flex-flow: row;
+      flex-flow: row-reverse;
       width: $width-lg;
     }
 
@@ -136,7 +140,6 @@ export default {
     }
 
     &__side {
-      display: block;
       width: 25%;
     }
 

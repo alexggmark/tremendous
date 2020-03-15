@@ -48,7 +48,7 @@ export const articleDataBuilder = {
   },
   contentTextTruncated() {
     if (!this.data.fields) { return null; }
-    return tools.processRichText(this.data.fields.body, 500);
+    return tools.processRichText(this.data.fields.body, 300);
   },
   contentEntryId() {
     if (!this.data.sys) { return null; }
