@@ -74,8 +74,13 @@ export default {
 <style lang="scss">
 .header {
   color: $color-white;
+  min-height: 100px;
   transition: min-height 0.4s ease;
   width: 100%;
+
+  &.scrolled {
+    min-height: 90px;
+  }
 
   &__container {
     background-color: $color-background;
@@ -83,6 +88,7 @@ export default {
     display: flex;
     justify-content: center;
     position: fixed;
+    top: 0;
     z-index: 9999;
 
     &--inner {
@@ -91,7 +97,7 @@ export default {
       flex-flow: column;
       justify-content: space-between;
       margin: 0 auto;
-      min-height: 140px;
+      min-height: 90px;
       padding-bottom: $spacing-sm;
       top: 0;
       transition: min-height 0.4s ease, width 0.3s ease-in;
@@ -136,6 +142,7 @@ export default {
       &--inner {
         align-items: flex-end;
         flex-flow: row;
+        min-height: 140px;
         width: $width-lg;
 
         .scrolled & {
