@@ -12,8 +12,8 @@ yarn-debug.log*
 yarn-error.log*
 
 #certificates
-server.cert
-server.key
+# server.cert
+# server.key
 
 # Editor directories and files
 .idea
