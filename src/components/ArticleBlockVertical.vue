@@ -1,19 +1,29 @@
 <template>
   <div class="article-vertical">
-    <div class="article-vertical__item" v-for="(article, index) in data" :key="index">
-      <router-link :to="{name: 'Article', params: {handle: article.entryId}}">
-        <div class="article-vertical__item--inner">
-          <h2 class="h2">
-            <a href="#">
-              {{ article.title }}
-            </a>
-          </h2>
-          <span class="article-vertical__date">
-            {{ article.date }}
-          </span>
-        </div>
-      </router-link>
-    </div>
+    <template v-if="loadedState">
+      <div class="article-vertical__item" v-for="(article, index) in data" :key="index">
+        <router-link :to="{name: 'Article', params: {handle: article.entryId}}">
+          <div class="article-vertical__item--inner">
+            <h2 class="h2">
+              <a href="#">
+                {{ article.title }}
+              </a>
+            </h2>
+            <span class="article-vertical__date">
+              {{ article.date }}
+            </span>
+          </div>
+        </router-link>
+      </div>
+    </template>
+    <template v-else>
+      <div class="article-vertical__item" v-for="i in 3" :key="i">
+        <div class="skeleton--text" v-for="i in 3" :key="i"></div>
+        <div class="skeleton--spacer-md"></div>
+        <div class="skeleton--subtitle-sm"></div>
+        <div class="skeleton--spacer-md"></div>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -52,7 +62,7 @@ export default {
         setTimeout(() => {
           this.loadedState = true;
         }, loadingTime)
-      })
+      });
   }
 }
 </script>

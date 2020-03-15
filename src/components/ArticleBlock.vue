@@ -14,7 +14,7 @@
           <div v-for="i in 4"  class="skeleton--title" :key="'block-title' + i"></div>
           <div class="skeleton--spacer-md"></div>
           <div class="skeleton--subtitle-sm"></div>
-          <div v-for="i in 8" class="skeleton--text" :key="'block-text' + i"></div>
+          <div v-for="i in 5" class="skeleton--text" :key="'block-text' + i"></div>
         </template>
       </div>
       <div class="article-block__image">
