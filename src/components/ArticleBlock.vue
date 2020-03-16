@@ -68,7 +68,7 @@ export default {
     display: flex;
     flex-flow: column-reverse;
     margin: 0 auto;
-    padding: calc(#{$layout-margin} / 2) 0 $spacing-md;
+    padding: 0 0 $spacing-md;
     width: 100%;
   }
 

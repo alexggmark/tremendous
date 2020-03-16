@@ -31,7 +31,7 @@
             <span class="main-article__text-content" v-html="contentText"></span>
           </template>
           <template v-else>
-            <div v-for="i in 20" class="skeleton--text" :key="'skeleton-text' + i"></div>
+            <div v-for="i in 20" class="skeleton--text-main" :key="'skeleton-text' + i"></div>
           </template>
         </div>
       </div>
@@ -122,7 +122,7 @@ export default {
 
   &__text-content{
     font-size: $font-size-md;
-    line-height: $line-height-md;
+    line-height: 40px;
   }
 
   .skeleton--image {

@@ -44,6 +44,15 @@ $randomNumber: 0;
     width: 100%;
   }
 
+  &--text-main {
+    @include skeleton-gradient;
+    @include skeleton-border-radius;
+    background-color: $color-grey-light;
+    height: 18px;
+    margin: $spacing-md 0;
+    width: 100%;
+  }
+
   &--title {
     @include skeleton-gradient;
     @include skeleton-border-radius;

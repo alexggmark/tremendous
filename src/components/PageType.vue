@@ -1,51 +1,58 @@
 <template>
   <section class="page">
-    <div class="page__container">
-      <div class="page__main">
-        <template v-if="loadedState">
-          <div class="page__image image" v-lazy:background-image="content1Image"></div>
-        </template>
-        <template v-else>
-          <div class="skeleton--image"></div>
-        </template>
-        <template v-if="loadedState">
-          <h2 class="h1 page__title">
-            {{content1Title}}
-          </h2>
-        </template>
-        <template v-else>
-          <div class="skeleton--spacer-md"></div>
-          <div v-for="i in 1" class="skeleton--title" :key="i"></div>
-          <div class="skeleton--spacer-lg"></div>
-        </template>
-        <template v-if="loadedState">
-          <span class="page__text-content" v-html="content1Text"></span>
-        </template>
-        <template v-else>
-          <div v-for="i in 20" class="skeleton--text" :key="'skeleton-text' + i"></div>
-        </template>
-
-        <div class="page__content shadow" v-if="content2Image && content2Text">
-          <div class="page__block">
-              <div class="page__image image" v-lazy:background-image="content2Image"></div>
-          </div>
-          <div class="page__block page__block--text">
-            <h1 class="h3">
-              {{content2Title}}
-            </h1>
-            <span class="page__text-content" v-html="content2Text"></span>
-          </div>
+    <div class="page--top">
+      <div class="page__container">
+        <div class="page__main">
+          <template v-if="loadedState">
+            <div class="page__image image" v-lazy:background-image="content1Image"></div>
+          </template>
+          <template v-else>
+            <div class="skeleton--image"></div>
+          </template>
+          <template v-if="loadedState">
+            <h2 class="h1 page__title">
+              {{content1Title}}
+            </h2>
+          </template>
+          <template v-else>
+            <div class="skeleton--spacer-md"></div>
+            <div v-for="i in 1" class="skeleton--title" :key="i"></div>
+            <div class="skeleton--spacer-lg"></div>
+          </template>
+          <template v-if="loadedState">
+            <span class="page__text-content" v-html="content1Text"></span>
+          </template>
+          <template v-else>
+            <div v-for="i in 20" class="skeleton--text" :key="'skeleton-text' + i"></div>
+          </template>
         </div>
-
-        <div class="page__content page__content--reverse shadow" v-if="content3Image && content3Text">
-          <div class="page__block">
-              <div class="page__image image" v-lazy:background-image="content3Image"></div>
+      </div>
+    </div>
+    <div class="page--bottom">
+      <div class="page__container">
+        <div class="page__main">
+          <div class="page__content shadow" v-if="content2Image && content2Text">
+            <div class="page__block">
+                <div class="page__image image" v-lazy:background-image="content2Image"></div>
+            </div>
+            <div class="page__block page__block--text">
+              <h1 class="h3">
+                {{content2Title}}
+              </h1>
+              <span class="page__text-content" v-html="content2Text"></span>
+            </div>
           </div>
-          <div class="page__block page__block--text">
-            <h1 class="h3">
-              {{content3Title}}
-            </h1>
-            <span class="page__text-content" v-html="content3Text"></span>
+
+          <div class="page__content page__content--reverse shadow" v-if="content3Image && content3Text">
+            <div class="page__block">
+                <div class="page__image image" v-lazy:background-image="content3Image"></div>
+            </div>
+            <div class="page__block page__block--text">
+              <h1 class="h3">
+                {{content3Title}}
+              </h1>
+              <span class="page__text-content" v-html="content3Text"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -133,7 +140,10 @@ export default {
 <style lang="scss">
 .page {
   color: $color-black;
-  padding-bottom: $spacing-xl;
+
+  &--bottom {
+    background-color: $color-grey-light;
+  }
 
   &__container {
     display: flex;
@@ -156,6 +166,11 @@ export default {
       display: flex;
       flex-flow: column;
       justify-content: center;
+
+      .h3 {
+        border-bottom: 1px solid $color-grey-light;
+        padding-bottom: $spacing-sm;
+      }
     }
   }
 
