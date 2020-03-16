@@ -61,8 +61,9 @@ export default {
 
 <style lang="scss">
 .article-block {
-  background-color: $color-secondary;
-  color: $color-black;
+  background: linear-gradient(0deg, $color-secondary, #46c19f);
+  background-color: #46c19f;
+  color: $color-white;
 
   &__container {
     display: flex;
@@ -95,8 +96,8 @@ export default {
   }
 
   &__date {
-    border-bottom: 1px solid $color-black;
-    color: $color-black;
+    border-bottom: 1px solid $color-white;
+    color: $color-white;
     display: block;
     font-family: $font-medium;
     font-size: $font-size-2xs;
@@ -110,7 +111,7 @@ export default {
   }
 
   &__bottom-spacer {
-    background-color: #ffffff;
+    background-color: $color-white;
     margin-bottom: $spacing-md;
     width: 100%;
   }

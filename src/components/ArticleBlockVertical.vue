@@ -93,6 +93,8 @@ export default {
       padding-right: $spacing-sm;
 
       &:hover {
+        background-color: yellow;
+
         a {
           text-decoration: underline;
         }

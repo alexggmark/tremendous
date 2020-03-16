@@ -4,7 +4,7 @@
       <template v-if="loadedState">
         <div class="article-grid__item" v-for="(article, index) in data" :key="index">
           <router-link :to="{name: 'Article', params: {handle: article.entryId}}">
-            <div class="article-grid__item--inner">
+            <div class="article-grid__item--inner shadow">
               <h2 class="h2">
                 {{ article.title }}
               </h2>
@@ -64,8 +64,8 @@ export default {
 
 <style lang="scss">
 .article-grid {
-  background-color: $color-background;
-  color: $color-white;
+  background-color: $color-grey-light;
+  color: $color-black;
   overflow: auto;
 
   &__container {
@@ -85,8 +85,7 @@ export default {
     }
 
     &--inner {
-      border: 2px solid $color-white;
-      box-shadow: 0px 0px 0px 0px rgba(255,255,255,1);
+      background-color: $color-white;
       box-sizing: content-box;
       cursor: pointer;
       display: flex;
@@ -100,8 +99,8 @@ export default {
       transition: transform 0.2s ease, box-shadow 0.2s ease;
 
       &:hover {
-        box-shadow: 4px 4px 0px 0px rgba(255,255,255,1);
-        transform: translate(-4px, -4px);
+        box-shadow: 0px 11px 10px rgba(0,0,0,0.08);
+        transform: translate(0, -4px);
 
         h2 {
           text-decoration: underline;
@@ -109,13 +108,13 @@ export default {
       }
 
       a & {
-        color: $color-white;
+        color: $color-black;
       }
     }
   }
 
   &__date {
-    color: $color-white;
+    color: $color-black;
     font-size: $font-size-xs;
   }
 
