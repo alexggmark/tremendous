@@ -61,7 +61,7 @@ export default {
 
 <style lang="scss">
 .article-block {
-  background-color: #48d6af;
+  background-color: $color-black;
   color: $color-white;
 
   &__container {

@@ -111,6 +111,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.logo {
+  align-items: flex-end;
+  display: flex;
+  flex-flow: row-reverse;
+
   .obj1, .obj2, .obj3, .obj4 {
     position: absolute;
   }
@@ -134,11 +139,6 @@ export default {
     right: 0;
     z-index: 1;
   }
-
-.logo {
-  align-items: flex-end;
-  display: flex;
-  flex-flow: row-reverse;
 
   &__text {
     line-height: 36px;

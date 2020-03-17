@@ -47,8 +47,8 @@ export default {
   width: 100%;
 
   &__container {
-    border-bottom: 2px solid #000000;
-    border-top: 2px solid #000000;
+    border-bottom: 1px solid $color-grey-light;
+    border-top: 1px solid $color-grey-light;
     margin: 1rem auto 0;
     width: 100%;
   }
