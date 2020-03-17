@@ -2,7 +2,7 @@
   <div class="logo">
     <div class="logo__shapes">
       <svg class="obj1" height="20" width="20">
-        <circle cx="10" cy="10" r="10" fill="#ff0000"></circle>
+        <circle cx="10" cy="10" r="10" fill="#d85e5e"></circle>
       </svg>
       <svg class="obj2" width="30" height="20">
         <rect width="30" height="20" fill="#00ffb8"></rect>
@@ -17,8 +17,6 @@
     <span class="logo__text">
       <span class="logo__text--logo obj5" data-splitting="tremendous">tremendous</span>
     </span>
-    <!-- <button @click="setAnimation">Set</button>
-    <button @click="runAnimation">Play</button> -->
   </div>
 </template>
 

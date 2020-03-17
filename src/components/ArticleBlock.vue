@@ -61,8 +61,7 @@ export default {
 
 <style lang="scss">
 .article-block {
-  background: linear-gradient(0deg, $color-secondary, #46c19f);
-  background-color: #46c19f;
+  background-color: #48d6af;
   color: $color-white;
 
   &__container {

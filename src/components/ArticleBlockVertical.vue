@@ -44,6 +44,7 @@ export default {
         return {
           title: tools.truncateString(item.fields.title, 60),
           date: tools.processDate(item.sys.createdAt),
+          image: item.fields.image.fields.file.url,
           entryId: item.sys.id,
         };
       });
@@ -93,8 +94,6 @@ export default {
       padding-right: $spacing-sm;
 
       &:hover {
-        background-color: yellow;
-
         a {
           text-decoration: underline;
         }
