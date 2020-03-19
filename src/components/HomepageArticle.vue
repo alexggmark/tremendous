@@ -95,11 +95,12 @@ export default {
 
 <style lang="scss">
 .home-article {
+  padding-bottom: 2rem;
+
   &__container {
     display: flex;
     flex-flow: column;
     margin: 0 auto;
-    padding-bottom: $spacing-sm;
     width: 100%;
   }
 
@@ -152,7 +153,7 @@ export default {
         }
 
         a {
-          color: $color-primary;
+          color: $color-black;
           text-decoration: none;
 
           &:hover {

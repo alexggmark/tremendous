@@ -66,18 +66,19 @@ export default {
 .article-grid {
   background-color: $color-grey-light;
   color: $color-black;
+  margin-bottom: 0;
   overflow: auto;
 
   &__container {
     display: flex;
     flex-wrap: wrap;
-    margin: $layout-sm auto;
-    padding-top: $spacing-sm;
+    margin: 0.65rem auto 0;
+    padding-top: 0;
     width: 100%;
   }
 
   &__item {
-    margin-bottom: $spacing-lg;
+    margin-bottom: 1.8rem;
     width: 100%;
 
     a {
@@ -92,7 +93,7 @@ export default {
       flex-flow: column;
       height: 100%;
       justify-content: space-between;
-      margin: 0 $spacing-xs 0 0;
+      margin: 0 $spacing-xs;
       padding-bottom: $spacing-sm;
       padding-left: $spacing-xs;
       padding-right: $spacing-sm;
@@ -118,8 +119,16 @@ export default {
     font-size: $font-size-xs;
   }
 
+  @media screen and (min-width: $width-sm) {
+    margin-bottom: 1rem;
+  }
+
   @media screen and (min-width: $width-lg) {
+    margin-bottom: 2rem;
+
     &__container {
+      margin: $layout-sm auto;
+      padding-top: $spacing-sm;
       width: $width-lg;
     }
 

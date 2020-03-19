@@ -35,15 +35,11 @@
           </template>
         </div>
       </div>
-      <div class="main-article__side">
-       <article-block-vertical/>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-import ArticleBlockVertical from '@/components/ArticleBlockVertical'
 import {ContentTasks, loadingTime} from '@/common/api'
 import {articleDataBuilder} from '@/common/tools'
 
@@ -61,9 +57,6 @@ export default {
     }
   },
   computed: articleDataBuilder,
-  components: {
-    ArticleBlockVertical,
-  },
   created() {
     ContentTasks.getArticleById(this.entryId)
       .then((post) => {
@@ -94,11 +87,12 @@ export default {
   }
 
   &__main {
+    padding: 0;
     width: 100%;
   }
 
-  &__side {
-    width: 100%;
+  &__content {
+    padding: 0 1rem;
   }
 
   &__image {
@@ -108,6 +102,7 @@ export default {
   }
 
   &__title {
+    color: $color-primary;
     margin: $spacing-xl 0 $spacing-lg;
   }
 
@@ -129,18 +124,25 @@ export default {
     height: 420px;
   }
 
+  @media screen and (min-width: $width-sm) {
+    &__main {
+      padding: 0 1rem;
+      width: calc(100% - 2rem);
+    }
+
+    &__content {
+      padding: 0;
+    }
+  }
+
   @media screen and (min-width: $width-lg) {
+    &__main {
+      padding: 0 16rem 0 0;
+    }
+
     &__container {
       flex-flow: row-reverse;
       width: $width-lg;
-    }
-
-    &__main {
-      width: 75%;
-    }
-
-    &__side {
-      width: 25%;
     }
 
     &__image {

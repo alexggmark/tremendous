@@ -123,7 +123,6 @@ export default {
     ContentTasks.getArticleById(this.pageContentId)
       .then((content) => {
         this.data = content;
-        console.log(content);
       })
       .catch((error) => {
         console.log(error);
@@ -148,14 +147,15 @@ export default {
   &__container {
     display: flex;
     margin: 0 auto;
-    width: 100%;
+    padding: 0 1rem;
+    width: calc(100% - 2rem);
   }
 
   &__content {
     background-color: $color-white;
     display: flex;
     flex-flow: column;
-    padding: $spacing-xs;
+    padding: 1.2rem;
     margin: $spacing-md 0;
   }
 
@@ -210,14 +210,14 @@ export default {
     height: 420px;
   }
 
-  @media screen and (min-width: $width-lg) {
+  @media screen and (min-width: $width-md) {
     &__container {
       flex-flow: row;
-      width: $width-lg;
     }
 
     &__content {
       flex-flow: row;
+      padding: 0.6rem;
 
       &--reverse {
         flex-flow: row-reverse;
@@ -227,21 +227,27 @@ export default {
     &__block {
       padding: 0 $spacing-md 0 0;
 
+      .image {
+        height: auto;
+        padding-top: 100%;
+      }
+
       .page__content--reverse & {
         padding: 0 0 0 $spacing-md;
       }
     }
+  }
+
+  @media screen and (min-width: $width-lg) {
+    &__container {
+      flex-flow: row;
+      padding: 0;
+      width: $width-lg;
+    }
 
     &__main {
+      padding: 0 16rem 0 0;
       width: 100%;
-    }
-
-    &__image {
-      height: 320px;
-    }
-
-    .skeleton--image {
-      height: 320px;
     }
   }
 }
