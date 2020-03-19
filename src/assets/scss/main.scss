@@ -2,24 +2,28 @@ $width-lg: 1100px;
 $width-md: 860px;
 $width-sm: 567px;
 
-$font-bold: 'Spartan-ExtraBold';
-$font-medium: 'Spartan-Medium';
-$font-thin: 'Spartan-Thin';
+$font-black: 'Font-Black';
+$font-bold: 'Font-Bold';
+// $font-medium: 'Font-Medium';
+$font-medium: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+$font-thin: 'Font-Thin';
 
 $font-size-logo: 45px;
-$font-size-xl: 40px;
+$font-size-2xl: 54px;
+$font-size-xl: 43px;
 $font-size-lg: 25px;
-$font-size-md: 17px;
+$font-size-md: 18px;
 $font-size-sm: 15px;
 $font-size-xs: 12px;
 $font-size-2xs: 10px;
 
-$line-height-xl: 56px;
+$line-height-2xl: 70px;
+$line-height-xl: 49px;
 $line-height-lg: 36px;
 $line-height-md: 30px;
 $line-height-sm: 26px;
 
-$spacing-xl: 2.5rem;
+$spacing-xl: 62px;
 $spacing-lg: 2rem;
 $spacing-md: 1.5rem;
 $spacing-sm: 1rem;
@@ -33,14 +37,12 @@ $layout-sm: 30px;
 
 $layout-margin: 10px;
 
-// $color-background: #0300dc;
-$color-background: #000000;
-$color-black: #000000;
+$color-black: #111111;
 $color-white: #ffffff;
-$color-grey: #B4B4B4;
-$color-grey-light: #f1f5fb;
-$color-primary: #0020ff;
-$color-secondary: #00ffb8;
+$color-grey: #454545;
+$color-grey-light: #f1f9fb;
+$color-primary: #0059ff;
+$color-secondary: #ff4b3e;
 $color-tertiary: #ffde00;
 
 @import 'fonts';
@@ -48,9 +50,11 @@ $color-tertiary: #ffde00;
 
 html, body {
   background-color: $color-white;
+  color: $color-grey;
   margin: 0;
   padding: 0;
-  font-family: 'Spartan-Thin', sans-serif;
+  font-family: $font-medium;
+  font-weight: 100;
 }
 
 .visually-hidden {
@@ -59,14 +63,14 @@ html, body {
 }
 
 .h1 {
-  font-family: $font-bold;
-  font-size: $font-size-xl;
-  line-height: $line-height-xl;
+  font-family: $font-medium;
+  font-size: 43px;
+  line-height: 60px;
   margin: $spacing-sm 0 $spacing-md;
 }
 
 .h2 {
-  font-family: $font-bold;
+  font-family: $font-medium;
   font-size: $font-size-md;
   line-height: $line-height-lg;
 }
@@ -77,7 +81,7 @@ html, body {
 
 .h5 {
   color: $color-grey;
-  font-family: $font-thin;
+  font-family: $font-medium;
   font-size: $font-size-xs;
 }
 

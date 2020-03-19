@@ -2,16 +2,16 @@
   <div class="logo">
     <div class="logo__shapes">
       <svg class="obj1" height="20" width="20">
-        <circle cx="10" cy="10" r="10" fill="#d85e5e"></circle>
+        <circle cx="10" cy="10" r="10" fill="#ff4b3e"></circle>
       </svg>
       <svg class="obj2" width="30" height="20">
-        <rect width="30" height="20" fill="#00ffb8"></rect>
+        <rect width="30" height="20" fill="#0059ff"></rect>
       </svg>
       <svg class="obj3" height="20" width="20">
-        <circle cx="10" cy="10" r="10" fill="#00ffb8"></circle>
+        <circle cx="10" cy="10" r="10" fill="#0059ff"></circle>
       </svg>
       <svg class="obj4" height="20" width="20">
-        <circle cx="10" cy="10" r="10" fill="#62b3d0"></circle>
+        <circle cx="10" cy="10" r="10" fill="#0059ff"></circle>
       </svg>
     </div>
     <span class="logo__text">
@@ -114,6 +114,7 @@ export default {
 .logo {
   align-items: flex-end;
   display: flex;
+  margin-bottom: -9px;
   flex-flow: row-reverse;
 
   .obj1, .obj2, .obj3, .obj4 {
@@ -141,23 +142,26 @@ export default {
   }
 
   &__text {
-    line-height: 36px;
+    color: $color-primary;
+    line-height: 28px;
     margin-bottom: 0;
     padding-bottom: 0;
     overflow: hidden;
 
     &--logo {
       display: block;
-      font-family: 'Lobster', sans-serif;
-      font-size: 45px;
+      font-family: 'Font-Black', sans-serif;
+      font-size: 28px;
       letter-spacing: -1px;
-      padding: 0 $spacing-sm;
+      margin-bottom: -3px;
     }
   }
 
   &__shapes {
     height: 20px;
+    margin-bottom: -3px;
     position: relative;
+    transform: scale(0.8);
     width: 75px;
   }
 

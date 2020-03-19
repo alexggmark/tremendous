@@ -1,7 +1,6 @@
 <template>
   <div class="layout">
     <layout-header/>
-    <layout-article-navigation/>
     <slot/>
     <layout-footer/>
   </div>
@@ -9,13 +8,11 @@
 
 <script>
 import LayoutHeader from '@/components/LayoutHeader'
-import LayoutArticleNavigation from '@/components/LayoutArticleNavigation'
 import LayoutFooter from '@/components/LayoutFooter'
 
 export default {
   components: {
     LayoutHeader,
-    LayoutArticleNavigation,
     LayoutFooter,
   },
   updated() {

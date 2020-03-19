@@ -78,7 +78,7 @@ export default {
 
   &__item {
     margin-bottom: $spacing-lg;
-    width: 50%;
+    width: 100%;
 
     a {
       text-decoration: none;
@@ -118,14 +118,13 @@ export default {
     font-size: $font-size-xs;
   }
 
-  @media screen and (min-width: $width-md) {
+  @media screen and (min-width: $width-lg) {
     &__container {
-      padding-right: $layout-lg;
-      width: calc(#{$width-lg} - #{$layout-lg});
+      width: $width-lg;
     }
 
     &__item {
-      width: 25%;
+      width: 50%;
 
       &--inner {
         margin: 0 $spacing-xs 0 0;

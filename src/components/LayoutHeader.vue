@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="header" ref="header">
-      <div class="header__container">
+      <div class="header__container shadow">
         <div class="header__container--inner">
           <div class="header__navigation">
             <navigation-component :navigation-links="navigation" />
@@ -33,11 +33,11 @@ export default {
           id: '7bV3O9Tl8v48qvSwpuGDFw'
         },
         {
-          title: 'Test3',
+          title: 'Articles',
           type: 'Experiment1',
         },
         {
-          title: 'Test4',
+          title: 'Portfolio',
           type: 'Experiment2',
         },
       ]
@@ -73,7 +73,8 @@ export default {
 
 <style lang="scss">
 .header {
-  color: $color-white;
+  color: $color-black;
+  margin-bottom: 2rem;
   min-height: 100px;
   transition: min-height 0.4s ease;
   width: 100%;
@@ -83,7 +84,7 @@ export default {
   }
 
   &__container {
-    background-color: $color-background;
+    background-color: $color-white;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -113,14 +114,16 @@ export default {
       li {
         font-size: 14px;
         float: left;
-        margin-right: $spacing-sm;
+        margin: 0 $spacing-xs 0 0;
 
         a {
-          color: #ffffff;
+          padding: 0.7rem 1.5rem;
+          color: $color-black;
           text-decoration: none;
 
           &:hover {
-            text-decoration: underline;
+            background-color: $color-grey-light;
+            border-radius: 3px;
           }
         }
       }
@@ -140,12 +143,15 @@ export default {
 
     &__container {
       &--inner {
-        align-items: flex-end;
+        align-items: center;
         flex-flow: row;
-        min-height: 140px;
+        min-height: 50px;
+        padding-top: 90px;
+        transition: padding-top 0.4s;
         width: $width-lg;
 
         .scrolled & {
+          padding-top: 0;
           min-height: 50px;
         }
       }

@@ -122,7 +122,7 @@ export default {
 
   &__text-content{
     font-size: $font-size-md;
-    line-height: 40px;
+    line-height: $line-height-md;
   }
 
   .skeleton--image {

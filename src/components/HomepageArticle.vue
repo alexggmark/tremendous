@@ -19,7 +19,7 @@
             <div class="skeleton--subtitle-sm"></div>
           </template>
           <template v-if="loadedState">
-            <h1 class="h1">
+            <h1 class="home-article__title">
               <router-link :to="{name: 'Article', params: {handle: contentEntryId}}">
                 {{contentTitleTruncated}}
               </router-link>
@@ -109,18 +109,18 @@ export default {
     .image {
       background-position: center;
       background-size: cover;
-      height: 550px;
+      height: 350px;
     }
 
     .skeleton--image {
-      height: 550px;
+      height: 350px;
     }
   }
 
   &__content {
     &--inner {
       a {
-        color: $color-black;
+        color: $color-primary;
         text-decoration: none;
 
         &:hover {
@@ -131,7 +131,7 @@ export default {
   }
 
   &__date {
-    background-color: $color-primary;
+    background-color: $color-secondary;
     color: $color-white;
     font-family: $font-medium;
     font-size: $font-size-2xs;
@@ -152,7 +152,7 @@ export default {
         }
 
         a {
-          color: $color-black;
+          color: $color-primary;
           text-decoration: none;
 
           &:hover {
@@ -169,20 +169,26 @@ export default {
       position: relative;
       width: $width-lg;
       z-index: 0;
-
-      // @include container-shadow;
     }
 
     &__image {
       width: 50%;
 
       .image {
-        height: 350px;
+        height: auto;
+        padding-top: 100%;
       }
 
       .skeleton--image {
-        height: 350px;
+        height: auto;
+        padding-top: 100%;
       }
+    }
+
+    &__title {
+      font-size: $font-size-2xl;
+      line-height: $line-height-2xl;
+      margin: 0.3em 0 0.67em;
     }
 
     &__content {
