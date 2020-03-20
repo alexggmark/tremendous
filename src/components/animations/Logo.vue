@@ -142,7 +142,7 @@ export default {
   }
 
   &__text {
-    color: $color-primary;
+    color: $color-black;
     line-height: 28px;
     margin-bottom: 0;
     padding-bottom: 0;

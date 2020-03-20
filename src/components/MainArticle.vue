@@ -10,7 +10,7 @@
         </template>
         <div class="main-article__content">
           <template v-if="loadedState">
-            <h2 class="h1 main-article__title">
+            <h2 class="main-article__title">
               {{data.fields.title}}
             </h2>
           </template>
@@ -103,7 +103,9 @@ export default {
 
   &__title {
     color: $color-primary;
-    margin: $spacing-xl 0 $spacing-lg;
+    font-size: 29px;
+    line-height: 36px;
+    margin: $spacing-md 0 $spacing-md;
   }
 
   &__date {
@@ -111,6 +113,7 @@ export default {
     display: block;
     font-family: $font-medium;
     font-size: $font-size-2xs;
+    font-weight: 500;
     padding-bottom: $spacing-2xs;
     width: 100%;
   }

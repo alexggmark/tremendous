@@ -133,10 +133,11 @@ export default {
 
   &__date {
     background-color: $color-secondary;
+    border-radius: 20px;
     color: $color-white;
     font-family: $font-medium;
     font-size: $font-size-2xs;
-    padding: 0.1rem 0.2rem;
+    padding: 0.1rem 0.4rem;
   }
 
   &__more-articles {
@@ -187,8 +188,8 @@ export default {
     }
 
     &__title {
-      font-size: $font-size-2xl;
-      line-height: $line-height-2xl;
+      font-size: 53px;
+      line-height: 61px;
       margin: 0.3em 0 0.67em;
     }
 
