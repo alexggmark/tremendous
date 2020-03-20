@@ -36,9 +36,9 @@
                 <div class="page__image image" v-lazy:background-image="content2Image"></div>
             </div>
             <div class="page__block page__block--text">
-              <h1 class="h3">
+              <h2 class="h3">
                 {{content2Title}}
-              </h1>
+              </h2>
               <span class="page__text-content" v-html="content2Text"></span>
             </div>
           </div>
@@ -48,9 +48,9 @@
                 <div class="page__image image" v-lazy:background-image="content3Image"></div>
             </div>
             <div class="page__block page__block--text">
-              <h1 class="h3">
+              <h2 class="h3">
                 {{content3Title}}
-              </h1>
+              </h2>
               <span class="page__text-content" v-html="content3Text"></span>
             </div>
           </div>
@@ -168,8 +168,7 @@ export default {
       justify-content: center;
 
       .h3 {
-        border-bottom: 1px solid $color-grey-light;
-        padding-bottom: $spacing-sm;
+        color: $color-primary;
       }
     }
   }

@@ -150,18 +150,21 @@ export default {
 
     &--logo {
       display: block;
-      font-family: 'Font-Black', sans-serif;
-      font-size: 28px;
-      letter-spacing: -1px;
-      margin-bottom: -3px;
+      font-family: 'Helvetica', sans-serif;
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      margin-bottom: -5px;
+      margin-right: 3px;
     }
   }
 
   &__shapes {
     height: 20px;
     margin-bottom: -3px;
+    margin-right: -6px;
     position: relative;
-    transform: scale(0.8);
+    transform: scale(0.7);
     width: 75px;
   }
 

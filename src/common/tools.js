@@ -26,6 +26,10 @@ export const articleDataBuilder = {
     if (!this.data.sys) { return null; }
     return this.data.sys.contentType.sys.id;
   },
+  contentCategory() {
+    if (!this.data.fields) { return null; }
+    return this.data.fields.category;
+  },
   contentTitle() {
     if (!this.data.fields) { return null; }
     return this.data.fields.title;

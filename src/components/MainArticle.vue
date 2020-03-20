@@ -11,6 +11,7 @@
         <div class="main-article__content">
           <template v-if="loadedState">
             <h2 class="main-article__title">
+              <!-- {{ contentCategory }} -->
               {{data.fields.title}}
             </h2>
           </template>
@@ -61,6 +62,7 @@ export default {
     ContentTasks.getArticleById(this.entryId)
       .then((post) => {
         this.data = post;
+        console.log(post);
       })
       .catch((error) => {
         console.log(error);
