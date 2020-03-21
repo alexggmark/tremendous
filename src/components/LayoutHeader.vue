@@ -1,11 +1,11 @@
 <template>
   <header>
     <div class="header" ref="header">
-      <div class="header__mobile-menu" ref="mobilemenu">
-        <div class="header__mobile-menu--close" @click="toggleMobileMenu">
+      <div class="header__mobile-menu" ref="mobilemenu" @click="toggleMobileMenu">
+        <div class="header__mobile-menu--close">
           <mobile-close />
         </div>
-        <navigation-component :navigation-links="navigation" v-on:linkClicked="linkInteraction" />
+        <navigation-component :navigation-links="navigation" />
       </div>
       <div class="header__container shadow">
         <div class="header__container--inner">
@@ -79,9 +79,6 @@ export default {
 
       scrollLock.disablePageScroll();
       this.$refs.mobilemenu.classList.add('show');
-    },
-    linkInteraction() {
-      this.toggleMobileMenu();
     }
   },
   mounted() {
@@ -179,7 +176,7 @@ export default {
   }
 
   &__mobile-menu {
-    background-color: $color-white;
+    background-color: rgba(0, 0, 0, 0.95);
     display: block;
     height: 100vh;
     left: -100%;
@@ -212,9 +209,10 @@ export default {
         transition: padding 0.2s ease;
 
         a {
-          color: $color-black;
+          color: $color-white;
           display: block;
-          font-size: 4.4rem;
+          font-family: Helvetica, sans-serif;
+          font-size: 2.4rem;
           font-weight: 100;
           height: 100%;
           padding: 1rem;
@@ -223,11 +221,11 @@ export default {
         }
 
         &:not(last-child) {
-          border-bottom: 1px solid $color-grey-light;
+          border-bottom: 1px solid #000000;
         }
 
         &:hover {
-          background-color: $color-grey-light;
+          background-color: #000000;
           padding-left: 1rem;
         }
       }

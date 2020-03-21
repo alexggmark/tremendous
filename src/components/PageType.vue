@@ -169,7 +169,6 @@ export default {
     }
 
     .h3 {
-      color: $color-primary;
       margin-bottom: 0;
     }
   }

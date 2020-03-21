@@ -13,7 +13,7 @@ export default {
 <style lang="scss">
   .mobile-close {
     height: 30px;
-    fill: $color-black;
+    fill: $color-white;
     width: 30px;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="(link, index) in navigationLinks" :key="index" @click="linkClicked">
+    <li v-for="(link, index) in navigationLinks" :key="index">
       <router-link :to="{name: 'Page', params: {type: link.type, id: link.id}}" v-if="link.type">
         {{ link.title }}
       </router-link>
@@ -20,11 +20,6 @@ export default {
     navigationLinks: {
       type: Array,
       required: true,
-    }
-  },
-  methods: {
-    linkClicked() {
-      this.$emit('linkClicked');
     }
   }
 }

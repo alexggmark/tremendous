@@ -78,7 +78,7 @@ export default {
   &__container {
     display: flex;
     flex-wrap: wrap;
-    margin: 0.65rem auto 0;
+    margin: 2rem auto 1.2rem;
     padding-top: 0;
     width: 100%;
   }
