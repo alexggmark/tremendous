@@ -153,6 +153,7 @@ export default {
 
   &__content {
     background-color: $color-white;
+    border-radius: 5px;
     display: flex;
     flex-flow: column;
     padding: 1.2rem;
