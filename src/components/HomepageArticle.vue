@@ -118,7 +118,15 @@ export default {
     }
   }
 
+  &__title {
+    font-size: 29px;
+    line-height: 36px;
+    margin: $spacing-xs 0 $spacing-md;
+  }
+
   &__content {
+    padding: $spacing-xs 1rem 0;
+
     &--inner {
       a {
         color: $color-primary;
@@ -194,7 +202,7 @@ export default {
     }
 
     &__content {
-      padding-top: $spacing-xs;
+      padding: $spacing-xs 0 0;
       width: 50%;
 
       &--inner {

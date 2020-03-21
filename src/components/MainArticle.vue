@@ -4,6 +4,7 @@
       <div class="main-article__main">
         <template v-if="loadedState">
           <div class="main-article__image image" v-lazy:background-image="contentImage"></div>
+          <article-tags :tag-data="contentCategory"/>
         </template>
         <template v-else>
           <div class="skeleton--image"></div>
@@ -11,7 +12,6 @@
         <div class="main-article__content">
           <template v-if="loadedState">
             <h2 class="main-article__title">
-              <!-- {{ contentCategory }} -->
               {{data.fields.title}}
             </h2>
           </template>
@@ -43,6 +43,7 @@
 <script>
 import {ContentTasks, loadingTime} from '@/common/api'
 import {articleDataBuilder} from '@/common/tools'
+import ArticleTags from '@/components/ArticleTags'
 
 export default {
   props: {
@@ -56,6 +57,9 @@ export default {
       data: [],
       loadedState: false,
     }
+  },
+  components: {
+    ArticleTags,
   },
   computed: articleDataBuilder,
   created() {
@@ -91,6 +95,12 @@ export default {
   &__main {
     padding: 0;
     width: 100%;
+
+    .article-tag {
+      padding: 0 1rem;
+      margin-bottom: 0.75rem;
+      text-align: left;
+    }
   }
 
   &__content {
@@ -107,7 +117,7 @@ export default {
     color: $color-primary;
     font-size: 29px;
     line-height: 36px;
-    margin: $spacing-md 0 $spacing-md;
+    margin: $spacing-xs 0 $spacing-md;
   }
 
   &__date {
@@ -133,6 +143,10 @@ export default {
     &__main {
       padding: 0 1rem;
       width: calc(100% - 2rem);
+
+      .article-tag {
+        padding: 0;
+      }
     }
 
     &__content {

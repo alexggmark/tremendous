@@ -1,10 +1,19 @@
 <template>
   <header>
     <div class="header" ref="header">
+      <div class="header__mobile-menu" ref="mobilemenu">
+        <div class="header__mobile-menu--close" @click="toggleMobileMenu">
+          <mobile-close />
+        </div>
+        <navigation-component :navigation-links="navigation" v-on:linkClicked="linkInteraction" />
+      </div>
       <div class="header__container shadow">
         <div class="header__container--inner">
           <div class="header__navigation">
             <navigation-component :navigation-links="navigation" />
+          </div>
+          <div class="header__mobile" @click="toggleMobileMenu">
+            <mobile-menu />
           </div>
           <logo-animation :animation="readyState" />
         </div>
@@ -16,6 +25,8 @@
 <script>
 import NavigationComponent from '@/components/Navigation'
 import LogoAnimation from '@/components/animations/Logo'
+import MobileMenu from '@/components/animations/MobileMenu'
+import MobileClose from '@/components/animations/MobileClose'
 import debounce from 'lodash/debounce';
 
 export default {
@@ -46,6 +57,8 @@ export default {
   components: {
     NavigationComponent,
     LogoAnimation,
+    MobileMenu,
+    MobileClose,
   },
   methods: {
     handleScroll() {
@@ -55,6 +68,17 @@ export default {
       }
       this.$refs.header.classList.remove('scrolled');
     },
+    toggleMobileMenu() {
+      if (this.$refs.mobilemenu.classList.contains('show')) {
+        this.$refs.mobilemenu.classList.remove('show');
+        return;
+      }
+
+      this.$refs.mobilemenu.classList.add('show');
+    },
+    linkInteraction() {
+      this.toggleMobileMenu();
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -74,13 +98,16 @@ export default {
 <style lang="scss">
 .header {
   color: $color-black;
-  margin-bottom: 2rem;
-  min-height: 100px;
+  min-height: 75px;
   transition: min-height 0.4s ease;
   width: 100%;
 
+  .logo {
+    margin-bottom: 6px;
+  }
+
   &.scrolled {
-    min-height: 90px;
+    min-height: 75px;
   }
 
   &__container {
@@ -95,18 +122,30 @@ export default {
     &--inner {
       display: flex;
       align-items: center;
-      flex-flow: column;
+      flex-flow: row-reverse;
       justify-content: space-between;
       margin: 0 auto;
-      min-height: 90px;
-      padding-bottom: $spacing-sm;
+      min-height: 75px;
       top: 0;
       transition: min-height 0.4s ease, width 0.3s ease-in;
       width: 100%;
     }
   }
 
+  &__mobile {
+    cursor: pointer;
+    display: block;
+    margin-right: 1.5rem;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
   &__navigation {
+    display: none;
+
     ul {
       list-style-type: none;
       padding-left: 0;
@@ -130,12 +169,68 @@ export default {
     }
   }
 
+  &__mobile-menu {
+    background-color: $color-white;
+    display: block;
+    height: 100vh;
+    left: -100%;
+    position: fixed;
+    transition: 0.5s ease left;
+    width: 100%;
+    z-index: 99999;
+
+    &--close {
+      cursor: pointer;
+      float: right;
+      margin: 0.75rem;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    &.show {
+      left: 0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      padding-top: 2rem;
+
+      li {
+        a {
+          color: $color-black;
+          display: block;
+          height: 100%;
+          padding: 1rem;
+          text-decoration: none;
+          width: 100%;
+        }
+
+        &:not(last-child) {
+          border-bottom: 1px solid $color-grey-light;
+        }
+
+        &:hover {
+          background-color: $color-grey-light;
+        }
+      }
+    }
+  }
+
   @media screen and (min-width: $width-lg) {
     display: flex;
     justify-content: center;
+    margin-bottom: 2rem;
     min-height: 140px;
     padding-bottom: $spacing-sm;
     width: 100%;
+
+    .logo {
+      margin-bottom: -9px;
+    }
 
     &.scrolled {
       min-height: 50px;
@@ -145,7 +240,9 @@ export default {
       &--inner {
         align-items: center;
         flex-flow: row;
+        justify-content: space-between;
         min-height: 50px;
+        padding-bottom: $spacing-sm;
         padding-top: 90px;
         transition: padding-top 0.4s;
         width: $width-lg;
@@ -158,6 +255,8 @@ export default {
     }
 
     &__navigation {
+      display: block;
+
       ul {
         margin-top: 1rem;
       }
@@ -165,6 +264,14 @@ export default {
       .scrolled & {
         bottom: $spacing-sm;
       }
+    }
+
+    &__mobile {
+      display: none;
+    }
+
+    &__mobile-menu {
+      display: none;
     }
   }
 }

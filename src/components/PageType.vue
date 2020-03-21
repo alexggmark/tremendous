@@ -166,10 +166,6 @@ export default {
       display: flex;
       flex-flow: column;
       justify-content: center;
-
-      .h3 {
-        color: $color-primary;
-      }
     }
   }
 

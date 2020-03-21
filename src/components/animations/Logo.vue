@@ -2,16 +2,19 @@
   <div class="logo">
     <div class="logo__shapes">
       <svg class="obj1" height="20" width="20">
-        <circle cx="10" cy="10" r="10" fill="#ff4b3e"></circle>
+        <circle cx="10" cy="10" r="10" fill="#272727"></circle>
+      </svg>
+      <svg class="obj1-2" height="20" width="20">
+        <circle cx="10" cy="10" r="10" fill="#ffffff"></circle>
       </svg>
       <svg class="obj2" width="30" height="20">
-        <rect width="30" height="20" fill="#0059ff"></rect>
+        <rect width="30" height="20" fill="#272727"></rect>
       </svg>
       <svg class="obj3" height="20" width="20">
-        <circle cx="10" cy="10" r="10" fill="#0059ff"></circle>
+        <circle cx="10" cy="10" r="10" fill="#272727"></circle>
       </svg>
       <svg class="obj4" height="20" width="20">
-        <circle cx="10" cy="10" r="10" fill="#0059ff"></circle>
+        <circle cx="10" cy="10" r="10" fill="#272727"></circle>
       </svg>
     </div>
     <span class="logo__text">
@@ -30,6 +33,7 @@ export default {
   data() {
     return {
       el1: '.obj1',
+      el1_2: '.obj1-2',
       el2: '.obj2',
       el3: '.obj3',
       el4: '.obj4',
@@ -41,7 +45,10 @@ export default {
     setAnimation() {
       anime.set(this.el1, {
         scale: 0,
-      })
+      });
+      anime.set(this.el1_2, {
+        scale: 0,
+      });
       anime.set(this.el2, {
         width: 0,
       });
@@ -74,9 +81,13 @@ export default {
           scale: 1,
         }, '-=750')
         .add({
+          targets: this.el1_2,
+          scale: 0.8,
+        }, '-=920')
+        .add({
           targets: this.el3,
           translateX: 0,
-        }, '-=300')
+        }, '-=500')
         .add({
           targets: this.el2,
           width: 30,
@@ -114,16 +125,20 @@ export default {
 .logo {
   align-items: flex-end;
   display: flex;
-  margin-bottom: -9px;
-  flex-flow: row-reverse;
+  flex-flow: row;
 
-  .obj1, .obj2, .obj3, .obj4 {
+  .obj1, .obj1-2, .obj2, .obj3, .obj4 {
     position: absolute;
   }
 
   .obj1 {
     left: 0;
     z-index: 3;
+  }
+
+  .obj1-2 {
+    left: 0;
+    z-index: 4;
   }
 
   .obj2 {
@@ -142,7 +157,7 @@ export default {
   }
 
   &__text {
-    color: $color-black;
+    color: #272727;
     line-height: 28px;
     margin-bottom: 0;
     padding-bottom: 0;
@@ -166,10 +181,6 @@ export default {
     position: relative;
     transform: scale(0.7);
     width: 75px;
-  }
-
-  @media screen and (min-width: $width-md) {
-    flex-flow: row;
   }
 }
 </style>

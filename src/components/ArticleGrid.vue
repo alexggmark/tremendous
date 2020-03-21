@@ -11,6 +11,7 @@
               <span class="article-grid__date">
                 {{ article.date }}
               </span>
+              <article-tags :tag-data="article.contentCategory"/>
             </div>
           </router-link>
         </div>
@@ -25,6 +26,7 @@
 <script>
 import {ContentTasks, loadingTime} from '@/common/api'
 import tools from '@/common/tools'
+import ArticleTags from '@/components/ArticleTags'
 
 export default {
   data() {
@@ -33,6 +35,9 @@ export default {
       loadedState: false,
     }
   },
+  components: {
+    ArticleTags,
+  },
   methods: {
     set(items) {
       const output = items.map((item) => {
@@ -40,6 +45,7 @@ export default {
           title: tools.truncateString(item.fields.title, 60),
           date: tools.processDate(item.sys.createdAt),
           entryId: item.sys.id,
+          contentCategory: item.fields.category,
         };
       });
       this.data = output;
@@ -87,6 +93,7 @@ export default {
 
     &--inner {
       background-color: $color-white;
+      border-radius: 5px;
       box-sizing: content-box;
       cursor: pointer;
       display: flex;
@@ -97,7 +104,16 @@ export default {
       padding-bottom: $spacing-sm;
       padding-left: $spacing-xs;
       padding-right: $spacing-sm;
+      position: relative;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      .article-tag {
+        position: absolute;
+        bottom: 6px;
+        max-width: 250px;
+        right: 2px;
+        text-align: right;
+      }
 
       &:hover {
         box-shadow: 0px 11px 10px rgba(0,0,0,0.08);
