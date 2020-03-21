@@ -212,7 +212,7 @@ export default {
 
     &__content {
       flex-flow: row;
-      padding: 0.6rem;
+      padding: 1rem;
 
       &--reverse {
         flex-flow: row-reverse;
@@ -224,7 +224,7 @@ export default {
 
       .image {
         height: auto;
-        padding-top: 100%;
+        padding-top: 75%;
       }
 
       .page__content--reverse & {

@@ -98,7 +98,7 @@ export default {
 
     .article-tag {
       padding: 0 1rem;
-      margin-bottom: 0.75rem;
+      margin: 0.75rem 0;
       text-align: left;
     }
   }
@@ -145,6 +145,7 @@ export default {
       width: calc(100% - 2rem);
 
       .article-tag {
+       margin: 0 0 0.75rem 0;
         padding: 0;
       }
     }

@@ -97,6 +97,11 @@ export default {
 
 <style lang="scss">
 .header {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
   color: $color-black;
   min-height: 75px;
   transition: min-height 0.4s ease;
@@ -197,14 +202,18 @@ export default {
     ul {
       list-style-type: none;
       padding-left: 0;
-      padding-top: 2rem;
+      padding-top: 3rem;
 
       li {
+        transition: padding 0.2s ease;
+
         a {
-          color: $color-black;
+          color: $color-primary;
           display: block;
+          font-size: 3.4rem;
+          font-weight: 100;
           height: 100%;
-          padding: 1rem;
+          padding: 0.25rem 1rem;
           text-decoration: none;
           width: 100%;
         }
@@ -215,6 +224,7 @@ export default {
 
         &:hover {
           background-color: $color-grey-light;
+          padding-left: 1rem;
         }
       }
     }

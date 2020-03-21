@@ -74,7 +74,7 @@ export default {
 
     @media screen and (min-width: $width-md) {
       &__tag {
-        background-color: #e6e6e6;
+        background-color: #cacaca;
         color: white;
 
         &:hover {

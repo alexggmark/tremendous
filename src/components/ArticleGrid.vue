@@ -141,11 +141,13 @@ export default {
 
   @media screen and (min-width: $width-lg) {
     margin-bottom: 2rem;
+    overflow: hidden;
 
     &__container {
       margin: $layout-sm auto;
       padding-top: $spacing-sm;
-      width: $width-lg;
+      padding-right: 50px;
+      width: calc(#{$width-lg} - 50px);
     }
 
     &__item {
