@@ -167,6 +167,11 @@ export default {
       flex-flow: column;
       justify-content: center;
     }
+
+    .h3 {
+      color: $color-primary;
+      margin-bottom: 0;
+    }
   }
 
   &__main {
@@ -184,6 +189,7 @@ export default {
   }
 
   &__title {
+    color: $color-primary;
     margin: $spacing-xl 0 $spacing-lg;
   }
 

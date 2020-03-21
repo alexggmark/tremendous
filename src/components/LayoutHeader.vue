@@ -28,6 +28,7 @@ import LogoAnimation from '@/components/animations/Logo'
 import MobileMenu from '@/components/animations/MobileMenu'
 import MobileClose from '@/components/animations/MobileClose'
 import debounce from 'lodash/debounce';
+import scrollLock from 'scroll-lock';
 
 export default {
   data() {
@@ -71,9 +72,12 @@ export default {
     toggleMobileMenu() {
       if (this.$refs.mobilemenu.classList.contains('show')) {
         this.$refs.mobilemenu.classList.remove('show');
+        scrollLock.enablePageScroll();
+
         return;
       }
 
+      scrollLock.disablePageScroll();
       this.$refs.mobilemenu.classList.add('show');
     },
     linkInteraction() {
@@ -208,12 +212,12 @@ export default {
         transition: padding 0.2s ease;
 
         a {
-          color: $color-primary;
+          color: $color-black;
           display: block;
-          font-size: 3.4rem;
+          font-size: 4.4rem;
           font-weight: 100;
           height: 100%;
-          padding: 0.25rem 1rem;
+          padding: 1rem;
           text-decoration: none;
           width: 100%;
         }
