@@ -2,10 +2,10 @@
   <div class="footer">
     <div class="footer__container">
       <div class="footer__content">
-        Lorem
+        Alex Grønmark
       </div>
       <div class="footer__content">
-        Ipsum
+        2020
       </div>
     </div>
   </div>
@@ -21,13 +21,15 @@ export default {
 .footer {
   background-color: #1b1b1b;
   color: $color-white;
+  font-size: 12px;
 
   &__container {
     display: flex;
     flex-flow: column;
+    justify-content: space-between;
     margin: 0 auto;
-    padding: $layout-sm 0;
-    width: 100%;
+    padding: $layout-sm 1rem;
+    width: calc(100% - 2rem);
   }
 
   &__content {
@@ -37,12 +39,12 @@ export default {
   @media screen and (min-width: $width-lg) {
     &__container {
       flex-flow: row;
+      padding: $layout-sm 0;
       width: $width-lg;
     }
 
     &__content {
       padding-top: $spacing-xs;
-      width: 50%;
     }
   }
 }
