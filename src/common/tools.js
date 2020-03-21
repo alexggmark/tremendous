@@ -1,5 +1,22 @@
 import moment from 'moment'
+import { BLOCKS, MARKS } from '@contentful/rich-text-types'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+
+const htmlRenderOptions = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content)}</p>`,
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      return `
+        <img class="embedded-image" src="${node.data.target.fields.file.url}">
+      `
+    }
+  },
+  renderMark: {
+    [MARKS.CODE]: (node) => {
+      return `<pre><code class="code">${node}</code></pre>`
+    }
+  }
+}
 
 const tools = {
   processDate(date) {
@@ -14,8 +31,9 @@ const tools = {
     return `${joinStr}...`;
   },
   processRichText(body, limit) {
-    if (!limit) { return documentToHtmlString(body); }
-    return `${documentToHtmlString(body).slice(0, limit)}...`;
+    if (!limit) { return documentToHtmlString(body, htmlRenderOptions); }
+
+    return documentToHtmlString(body, htmlRenderOptions);
   }
 }
 
