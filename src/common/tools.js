@@ -7,13 +7,13 @@ const htmlRenderOptions = {
     [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content)}</p>`,
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return `
-        <img class="embedded-image" src="${node.data.target.fields.file.url}">
+        <img class="contentful__embedded-image" src="${node.data.target.fields.file.url}">
       `
     }
   },
   renderMark: {
     [MARKS.CODE]: (node) => {
-      return `<pre><code class="code">${node}</code></pre>`
+      return `<pre class="contentful__code-block"><code>${node}</code></pre>`
     }
   }
 }

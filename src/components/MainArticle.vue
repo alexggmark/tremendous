@@ -76,7 +76,7 @@ export default {
           this.loadedState = true;
         }, loadingTime)
       })
-  }
+  },
 }
 </script>
 
@@ -84,6 +84,20 @@ export default {
 .main-article {
   color: $color-black;
   padding-bottom: $spacing-xl;
+
+  .contentful__code-block {
+    background-color: #232323;
+    color: #dfdffd;
+    font-size: 18px;
+    line-height: 25px;
+    padding: 1rem;
+    border-radius: 5px;
+    white-space: pre-wrap;
+  }
+
+  .contentful__embedded-image {
+    width: 100%;
+  }
 
   &__container {
     display: flex;
@@ -156,6 +170,11 @@ export default {
   }
 
   @media screen and (min-width: $width-lg) {
+    .code-block {
+      font-size: 16px;
+      line-height: 23px;
+    }
+
     &__main {
       padding: 0 16rem 0 0;
     }
