@@ -177,7 +177,7 @@ export default {
   }
 
   &__mobile-menu {
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(255, 255, 255, 0.95);
     display: block;
     height: 100vh;
     left: -100%;
@@ -189,7 +189,7 @@ export default {
     &--close {
       cursor: pointer;
       float: right;
-      margin: 0.75rem;
+      margin: 1.25rem;
       transition: transform 0.2s ease;
 
       &:hover {
@@ -210,10 +210,10 @@ export default {
         transition: padding 0.2s ease;
 
         a {
-          color: $color-white;
+          color: $color-black;
           display: block;
           font-family: Helvetica, sans-serif;
-          font-size: 2.4rem;
+          font-size: 3.4rem;
           font-weight: 100;
           height: 100%;
           padding: 1rem;
@@ -221,12 +221,12 @@ export default {
           width: 100%;
         }
 
-        &:not(last-child) {
-          border-bottom: 1px solid #000000;
+        &:not(:last-child) {
+          border-bottom: 1px solid #e6e6e6;
         }
 
         &:hover {
-          background-color: #000000;
+          background-color: $color-white;
           padding-left: 1rem;
         }
       }
