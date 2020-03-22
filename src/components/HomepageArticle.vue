@@ -122,25 +122,25 @@ export default {
     font-size: 29px;
     line-height: 36px;
     margin: $spacing-xs 0 $spacing-md;
-  }
 
-  &__content {
-    padding: $spacing-xs 1rem 0;
+    a {
+      color: $color-black;
+      text-decoration: underline;
+      text-decoration-color: $color-primary;
 
-    &--inner {
-      a {
+      &:hover {
+        background-color: $color-grey-light;
         color: $color-primary;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
       }
     }
   }
 
+  &__content {
+    padding: $spacing-xs 1rem 0;
+  }
+
   &__date {
-    background-color: $color-secondary;
+    background-color: $color-primary;
     border-radius: 20px;
     color: $color-white;
     font-family: $font-medium;

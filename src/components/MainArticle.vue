@@ -128,14 +128,15 @@ export default {
   }
 
   &__title {
-    color: $color-primary;
     font-size: 29px;
     line-height: 36px;
     margin: $spacing-xs 0 $spacing-md;
+    text-decoration: underline;
+    text-decoration-color: $color-primary;
   }
 
   &__date {
-    border-bottom: 1px solid $color-black;
+    border-bottom: 1px solid #e6e6e6;
     display: block;
     font-family: $font-medium;
     font-size: $font-size-2xs;

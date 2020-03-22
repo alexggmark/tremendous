@@ -10,7 +10,7 @@
             <div class="skeleton--image"></div>
           </template>
           <template v-if="loadedState">
-            <h2 class="h1 page__title">
+            <h2 class="page__title">
               {{content1Title}}
             </h2>
           </template>
@@ -189,8 +189,13 @@ export default {
   }
 
   &__title {
-    color: $color-primary;
-    margin: $spacing-xl 0 $spacing-lg;
+    color: $color-black;
+    display: inline-block;
+    font-size: 53px;
+    line-height: 60px;
+    margin: 1.5rem 0 0.5rem;
+    text-decoration: underline;
+    text-decoration-color: $color-primary;
   }
 
   &__date {
@@ -222,19 +227,25 @@ export default {
 
       &--reverse {
         flex-flow: row-reverse;
+        text-align: right;
       }
     }
 
     &__block {
-      padding: 0 $spacing-md 0 0;
+      padding: 0 3rem 0 0;
 
       .image {
+        border-radius: 3px 0 0 3px;
         height: auto;
         padding-top: 75%;
       }
 
       .page__content--reverse & {
-        padding: 0 0 0 $spacing-md;
+        padding: 0 0 0 3rem;
+
+        .image {
+          border-radius: 0 3px 3px 0;
+        }
       }
     }
   }

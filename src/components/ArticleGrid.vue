@@ -116,10 +116,12 @@ export default {
       }
 
       &:hover {
+        background-color: #fbfeff;
         box-shadow: 0px 11px 10px rgba(0,0,0,0.08);
         transform: translate(0, -4px);
 
         h2 {
+          color: $color-primary;
           text-decoration: underline;
         }
       }

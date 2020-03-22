@@ -169,6 +169,7 @@ export default {
           &:hover {
             background-color: $color-grey-light;
             border-radius: 3px;
+            color: $color-primary;
           }
         }
       }
