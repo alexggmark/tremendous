@@ -14,7 +14,12 @@ export const tagColors = [
   },
   {
     title: 'Blog',
-    color: '#ff5f00',
+    color: '#ff5300',
+    dark: false,
+  },
+  {
+    title: 'Project Management',
+    color: '#1036a2',
     dark: false,
   }
 ]

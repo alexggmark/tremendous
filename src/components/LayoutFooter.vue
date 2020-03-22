@@ -32,19 +32,11 @@ export default {
     width: calc(100% - 2rem);
   }
 
-  &__content {
-    padding: 0 $layout-sm 0 0;
-  }
-
   @media screen and (min-width: $width-lg) {
     &__container {
       flex-flow: row;
       padding: $layout-sm 0;
       width: $width-lg;
-    }
-
-    &__content {
-      padding-top: $spacing-xs;
     }
   }
 }
