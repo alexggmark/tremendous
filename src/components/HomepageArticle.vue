@@ -4,7 +4,7 @@
       <!-- <button @click="loadedState = !loadedState">Click</button> -->
       <div class="home-article__image">
         <template v-if="loadedState">
-          <div class="image" v-lazy:background-image="contentImage"></div>
+          <div class="image" v-lazy:background-image="imageItem"></div>
         </template>
         <template v-else>
           <div class="skeleton--image"></div>
@@ -54,6 +54,7 @@ export default {
   data() {
     return {
       data: [],
+      dataImage: [],
       propData: [],
       loadedState: false,
       loadedState2: false,
@@ -88,6 +89,13 @@ export default {
         setTimeout(() => {
           this.loadedState2 = true;
         }, loadingTime)
+      })
+
+    ContentTasks.getImage('4ZAerkN340sBVpKUuRafll')
+      .then((image) => {
+        this.dataImage = image;
+        console.log('TESTIN')
+        console.log(image);
       })
   }
 }

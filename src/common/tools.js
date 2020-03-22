@@ -75,5 +75,9 @@ export const articleDataBuilder = {
   contentEntryId() {
     if (!this.data.sys) { return null; }
     return this.data.sys.id;
+  },
+  imageItem() {
+    if (!this.dataImage || !this.dataImage.fields) { return null; }
+    return this.dataImage.fields.image.fields.file.url;
   }
 }

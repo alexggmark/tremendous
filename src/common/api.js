@@ -33,6 +33,9 @@ export const ContentTasks = {
   },
   getArticleById(id) {
     return ApiTasks.getEntry(id);
+  },
+  getImage(id) {
+    return ApiTasks.getEntry(id);
   }
 }
 
