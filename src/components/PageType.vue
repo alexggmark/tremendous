@@ -237,7 +237,7 @@ export default {
       .image {
         border-radius: 3px 0 0 3px;
         height: auto;
-        padding-top: 75%;
+        padding-top: 100%;
       }
 
       .page__content--reverse & {

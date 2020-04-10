@@ -40,8 +40,8 @@ export default {
           name: 'Home',
         },
         {
-          title: 'Contact',
-          type: 'Contact',
+          title: 'About me',
+          type: 'About',
           id: '7bV3O9Tl8v48qvSwpuGDFw'
         },
         {
