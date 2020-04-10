@@ -74,6 +74,8 @@ export default {
   color: $color-black;
   margin-bottom: 0;
   overflow: auto;
+  position: relative;
+  z-index: 1;
 
   &__container {
     display: flex;

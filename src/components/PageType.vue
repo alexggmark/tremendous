@@ -139,6 +139,7 @@ export default {
 <style lang="scss">
 .page {
   color: $color-black;
+  position: relative;
 
   &--bottom {
     background-color: $color-grey-light;

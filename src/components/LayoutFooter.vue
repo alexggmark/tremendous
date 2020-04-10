@@ -22,6 +22,8 @@ export default {
   background-color: #1b1b1b;
   color: $color-white;
   font-size: 12px;
+  position: relative;
+  z-index: 1;
 
   &__container {
     display: flex;

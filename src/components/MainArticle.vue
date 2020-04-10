@@ -84,6 +84,7 @@ export default {
 .main-article {
   color: $color-black;
   padding-bottom: $spacing-xl;
+  position: relative;
 
   .contentful__code-block {
     background-color: #232323;

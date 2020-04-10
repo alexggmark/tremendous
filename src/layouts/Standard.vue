@@ -1,5 +1,6 @@
 <template>
   <div class="layout">
+    <canvas-background/>
     <layout-header/>
     <slot/>
     <layout-footer/>
@@ -9,11 +10,13 @@
 <script>
 import LayoutHeader from '@/components/LayoutHeader'
 import LayoutFooter from '@/components/LayoutFooter'
+import CanvasBackground from '@/components/animations/Canvas'
 
 export default {
   components: {
     LayoutHeader,
     LayoutFooter,
+    CanvasBackground,
   },
   updated() {
     this.$nextTick(() => {
