@@ -14,7 +14,7 @@
     "contentful-rich-text-vue-renderer": "^1.1.5",
     "core-js": "^3.6.4",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "sass-loader": "^8.0.2",
     "scroll-lock": "^2.1.2",
     "splitting": "^1.0.6",
